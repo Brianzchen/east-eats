@@ -30,7 +30,7 @@ ko.bindingHandlers.map = {
 
     // Builds info window for marker click events
     mapObj.infoWindow = new google.maps.InfoWindow({
-      content:  "Temp value"
+      content:  ""
     });
 
     // Creates all the map markers
@@ -38,7 +38,9 @@ ko.bindingHandlers.map = {
     for (i = 0; i < model.markers.length; i++) {
       var temp = new google.maps.Marker({
         position: model.markers[i].position,
-        title: model.markers[i].title
+        title: model.markers[i].title,
+        description: model.markers[i].description,
+        address: model.markers[i].address
       });
       mapObj.marker.push(temp);
     }
@@ -47,9 +49,12 @@ ko.bindingHandlers.map = {
       mapObj.marker[i].setMap(mapObj.googleMap);
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
-          mapObj.infoWindow.open(mapObj.googleMap, mark);
+          mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+            mapObj.marker[mark].description,
+            mapObj.marker[mark].address));
+          mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
         };
-      })(temp));
+      })(i));
     }
   }
 };
@@ -61,4 +66,20 @@ function setAllMap(map) {
   for (var i = 0; i < myMap().marker.length; i++) {
     myMap().marker[i].setMap(map);
   }
+}
+
+function buildInfoWindow(title, para1, para2) {
+  return '<div id="infoContent">' +
+  '<h2 id="firstHeading" class="firstHeading">' +
+  title +
+  '</h2>' +
+  '<div id="infoBodyContent">' +
+  '<p>' +
+  para1 +
+  '</p>'+
+  '<p>'+
+  para2 +
+  '</p>'+
+  '</div>'+
+  '</div>'
 }
