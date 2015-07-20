@@ -2,8 +2,14 @@ var mapOptions = {
   center: model.initialMap.center,
   zoom: model.initialMap.zoom
 };
+
 var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
 var markers = [];
+
+var infowindow = new google.maps.InfoWindow({
+      content: "Hi there"
+});
 
 var viewModel = function() {
   this.hideText = ko.observable("Hide markers");
