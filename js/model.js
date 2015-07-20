@@ -1,3 +1,5 @@
+// Coordinates of map markers and initial values
+
 var model = {
   "initialMap":
   {

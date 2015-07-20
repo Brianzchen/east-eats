@@ -1,58 +1,53 @@
-var mapOptions = {
-  center: model.initialMap.center,
-  zoom: model.initialMap.zoom
-};
-
-var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-var markers = [];
-
-var infowindow = new google.maps.InfoWindow({
-      content: "Hi there"
-});
-
 var viewModel = function() {
-  this.hideText = ko.observable("Hide markers");
-  this.init = function() {
-    var mapOptions = {
-      center: model.initialMap.center,
-      zoom: model.initialMap.zoom
-    };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  };
-  this.hide = function() {
+  var self = this;
+  self.myMap = ko.observable({
+    center: ko.observable(model.initialMap.center),
+    zoom: ko.observable(model.initialMap.zoom)});
+  self.hideText = ko.observable("Hide markers");
+  self.hide = function() {
     if (this.hideText() == "Hide markers") {
       this.hideText("Show makers");
       setAllMap(null);
     } else {
       this.hideText("Hide markers");
-      setAllMap(map);
+      setAllMap(self.myMap().googleMap);
     }
   };
+};
+
+ko.bindingHandlers.map = {
+  init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+    var mapObj = ko.utils.unwrapObservable(valueAccessor());
+
+    // Builds the map defaults
+    var mapOptions = {
+      center: ko.utils.unwrapObservable(mapObj.center),
+      zoom: ko.utils.unwrapObservable(mapObj.zoom)
+    };
+
+    // Initiates the map
+    mapObj.googleMap = new google.maps.Map(element, mapOptions);
+
+    // Creates all the map markers
+    mapObj.marker = [];
+    for (i = 0; i < model.markers.length; i++) {
+      var temp = new google.maps.Marker({
+        position: model.markers[i].position,
+        title: model.markers[i].title
+      });
+      mapObj.marker.push(temp);
+    }
+    for (i = 0; i < mapObj.marker.length; i++) {
+      mapObj.marker[i].setMap(mapObj.googleMap);
+    }
+  }
 };
 
 ko.applyBindings(viewModel);
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+  for (var i = 0; i < myMap().marker.length; i++) {
+    myMap().marker[i].setMap(map);
   }
 }
-
-var initializeMap = function() {
-
-      for (i = 0; i < model.markers.length; i++) {
-        var temp = new google.maps.Marker({
-          position: model.markers[i].position,
-          title: model.markers[i].title,
-          icon: model.markers[i].icon
-        });
-        markers.push(temp);
-      }
-      for (i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-      }
-    }
-
-google.maps.event.addDomListener(window, 'load', initializeMap);
