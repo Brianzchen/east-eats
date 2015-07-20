@@ -28,6 +28,11 @@ ko.bindingHandlers.map = {
     // Initiates the map
     mapObj.googleMap = new google.maps.Map(element, mapOptions);
 
+    // Builds info window for marker click events
+    mapObj.infoWindow = new google.maps.InfoWindow({
+      content:  "Temp value"
+    });
+
     // Creates all the map markers
     mapObj.marker = [];
     for (i = 0; i < model.markers.length; i++) {
@@ -38,7 +43,13 @@ ko.bindingHandlers.map = {
       mapObj.marker.push(temp);
     }
     for (i = 0; i < mapObj.marker.length; i++) {
+      var temp = mapObj.marker[i];
       mapObj.marker[i].setMap(mapObj.googleMap);
+      google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
+        return function() {
+          mapObj.infoWindow.open(mapObj.googleMap, mark);
+        };
+      })(temp));
     }
   }
 };
