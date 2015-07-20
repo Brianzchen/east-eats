@@ -11,8 +11,11 @@
     </script>
   </head>
   <body>
-    <header id="header">
-      <h1>Nieghbourhood Map</h1>
+    <header id="header" class="row">
+      <h1 class="col-11">Nieghbourhood Map</h1>
+      <div class="col-1">
+        <button data-bind="click: hide, text: hideText">Hide</button>
+      </div>
     </header>
     <div id="map-canvas"></div>
     <script type='text/javascript' src='js/knockout-3.3.0.js'></script>

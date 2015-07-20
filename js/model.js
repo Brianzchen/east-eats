@@ -11,12 +11,12 @@ var model = {
       "icon": "images/food-icon.png"
     },
     {
-      "title": "Tanpopo Ramen",
+      "title": "Coffee Club",
       "position": new google.maps.LatLng(-36.899010, 174.903909),
       "icon": "images/food-icon.png"
     },
     {
-      "title": "Tanpopo Ramen",
+      "title": "Sura Korean",
       "position": new google.maps.LatLng(-36.899539, 174.907194),
       "icon": "images/food-icon.png"
     }
