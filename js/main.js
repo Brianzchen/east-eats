@@ -51,7 +51,8 @@ ko.bindingHandlers.map = {
 
     // Builds info window for marker click events
     mapObj.infoWindow = new google.maps.InfoWindow({
-      content:  ""
+      content:  "",
+      maxWidth: 400
     });
 
     // Creates all the map markers
@@ -61,7 +62,11 @@ ko.bindingHandlers.map = {
         position: model.markers[i].position,
         title: model.markers[i].title,
         description: model.markers[i].description,
-        address: model.markers[i].address
+        price: model.markers[i].price,
+        address: model.markers[i].address,
+        suburb: model.markers[i].suburb,
+        image: model.markers[i].image,
+        imageAlt: model.markers[i].imageAlt,
       });
       mapObj.marker.push(temp);
     }
@@ -118,7 +123,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb) 
   imageAlt +
   '">' +
   '<div id="infoBodyContent">' +
-  '<p>Price range per person: <i>' +
+  '<p>Approximate price range per person: <i>' +
   price +
   '</i></p>'+
   '<p>'+

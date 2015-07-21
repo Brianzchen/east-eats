@@ -60,4 +60,5 @@ html, body, #map-canvas {
 
 .infoImage {
   float: right;
+  margin-left: 5px;
 }
