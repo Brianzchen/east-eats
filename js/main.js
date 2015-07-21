@@ -7,6 +7,8 @@ var viewModel = function() {
   self.searchResult = function() {
     console.log(self.search());
   }
+
+  // Events that trigger when user presses the markers button
   self.hideText = ko.observable("Hide markers");
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
@@ -17,6 +19,20 @@ var viewModel = function() {
       setAllMap(self.myMap().googleMap);
     }
   };
+
+  // Displays a list view of all current markers on the map
+  self.listButton = ko.observable({
+    open: false
+  });
+  self.listFunction = function() {
+    if (self.listButton().open) {
+      self.listButton().open = false;
+      console.log("it's false now");
+    } else {
+      self.listButton().open = true;
+      console.log("it's true now");
+    }
+  }
 };
 
 // Creates the google map and initializes all the markers

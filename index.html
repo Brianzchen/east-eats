@@ -17,7 +17,10 @@
         <input class="searchBar" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
       </div>
       <div class="col-1">
-        <button data-bind="click: hide, text: hideText">Hide</button>
+        <button data-bind="click: hide, text: hideText"></button>
+      </div>
+      <div class="col-1">
+        <button data-bind="click: listFunction">Marker List</button>
       </div>
     </header>
     <div id="map-canvas" data-bind="map: myMap"></div>
