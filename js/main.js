@@ -102,6 +102,7 @@ function setAllMap(map) {
   }
 }
 
+// Helpful content creator for the Google maps info window
 function buildInfoWindow(title, para1, para2) {
   return '<div id="infoContent">' +
   '<h2 id="firstHeading" class="firstHeading">' +
