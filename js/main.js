@@ -3,6 +3,10 @@ var viewModel = function() {
   self.myMap = ko.observable({
     center: ko.observable(model.initialMap.center),
     zoom: ko.observable(model.initialMap.zoom)});
+  self.search = ko.observable("");
+  self.searchResult = function() {
+    console.log("ihi");
+  }
   self.hideText = ko.observable("Hide markers");
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
@@ -15,6 +19,7 @@ var viewModel = function() {
   };
 };
 
+// Creates the google map and initializes all the markers
 ko.bindingHandlers.map = {
   init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
     var mapObj = ko.utils.unwrapObservable(valueAccessor());
@@ -56,6 +61,19 @@ ko.bindingHandlers.map = {
         };
       })(i));
     }
+  }
+};
+
+// registers when the enter key is pressed to request a response
+ko.bindingHandlers.returnAction = {
+  init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+    var value = ko.utils.unwrapObservable(valueAccessor());
+
+    $(element).keydown(function(e) {
+      if (e.which === 13) {
+        value(viewModel);
+      }
+    });
   }
 };
 
