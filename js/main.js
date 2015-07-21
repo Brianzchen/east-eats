@@ -5,7 +5,7 @@ var viewModel = function() {
     zoom: ko.observable(model.initialMap.zoom)});
   self.search = ko.observable("");
   self.searchResult = function() {
-    console.log("ihi");
+    console.log(self.search());
   }
   self.hideText = ko.observable("Hide markers");
   self.hide = function() {
