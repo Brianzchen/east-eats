@@ -71,8 +71,12 @@ ko.bindingHandlers.map = {
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
           mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+            mapObj.marker[mark].image,
+            mapObj.marker[mark].imageAlt,
+            mapObj.marker[mark].price,
             mapObj.marker[mark].description,
-            mapObj.marker[mark].address));
+            mapObj.marker[mark].address,
+            mapObj.marker[mark].suburb));
           mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
         };
       })(i));
@@ -103,17 +107,27 @@ function setAllMap(map) {
 }
 
 // Helpful content creator for the Google maps info window
-function buildInfoWindow(title, para1, para2) {
+function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb) {
   return '<div id="infoContent">' +
-  '<h2 id="firstHeading" class="firstHeading">' +
+  '<h2 class="infoHeading">' +
   title +
   '</h2>' +
+  '<img class="infoImage" src="' +
+  image +
+  '" alt="' +
+  imageAlt +
+  '">' +
   '<div id="infoBodyContent">' +
-  '<p>' +
+  '<p>Price range per person: <i>' +
+  price +
+  '</i></p>'+
+  '<p>'+
   para1 +
   '</p>'+
   '<p>'+
-  para2 +
+  address +
+  '<br>' +
+  suburb +
   '</p>'+
   '</div>'+
   '</div>'
