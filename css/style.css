@@ -95,11 +95,12 @@ h1 {
   display: none;
 }
 
-/* Ajustments for tablet size screens*/
+/* Ajustments for tablet size screens */
 @media screen and (max-width: 1250px) {
 
 }
 
+/* Adjustment for mobile size screens */
 @media screen and (max-width: 500px) {
   .title {
     width: 100%;
@@ -124,5 +125,22 @@ h1 {
 
   #mainDiv {
     height: 80%;
+  }
+
+  #markerPanel {
+    left: 20%;
+    width: 80%;
+  }
+}
+
+/* Incase the window gets too short, readjust so the function buttons
+  are still visible */
+@media screen and (max-height: 450px) {
+  #header {
+    height: 25%;
+  }
+
+  #mainDiv {
+    height: 75%;
   }
 }

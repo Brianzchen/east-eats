@@ -31,7 +31,11 @@ var viewModel = function() {
       document.getElementById("markerPanel").style.display = "none";
     } else {
       self.listButton().open = true;
-      document.getElementById("map-canvas").style.width = "80%";
+      if ($(window).width() < 500) {
+        document.getElementById("map-canvas").style.width = "20%";
+      } else {
+        document.getElementById("map-canvas").style.width = "80%";
+      }
       document.getElementById("markerPanel").style.display = "inline";
     }
   }
