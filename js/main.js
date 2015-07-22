@@ -27,10 +27,11 @@ var viewModel = function() {
   self.listFunction = function() {
     if (self.listButton().open) {
       self.listButton().open = false;
-      console.log("it's false now");
+      document.getElementById("map-canvas").style.width = "100%";
     } else {
       self.listButton().open = true;
-      console.log("it's true now");
+      document.getElementById("map-canvas").style.width = "80%";
+      document.getElementById("markerPanel").style.display = "inline";
     }
   }
 };

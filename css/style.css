@@ -1,7 +1,8 @@
 html, body, #map-canvas {
-  height: 95.9%;
+  height: 100%%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .row {
@@ -69,6 +70,29 @@ h1 {
 
 .infoImage {
   margin-left: 5px;
+}
+
+#header {
+  height: 15%;
+}
+
+#mainDiv {
+  height: 85%;
+  width:100%;
+  display: flex;
+}
+
+#map-canvas {
+  width: 100%;
+}
+
+#markerPanel {
+  position: absolute;
+  left: 80%;
+  width: 20%;
+  height: 100%;
+  background: red;
+  display: none;
 }
 
 /* Ajustments for tablet size screens*/
