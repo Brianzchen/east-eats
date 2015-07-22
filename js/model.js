@@ -13,20 +13,20 @@ var model = {
       "price": "$13",
       "address": "491 Pakuranga Rd",
       "suburb": "Highland Park",
-      // Image should be 100px horizontal for consistency
+      // Image should be 100px vertical for consistency
       "image": "images/tanpopo.jpg",
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.899596,174.904265)
     },
     {
       "title": "Coffee Club",
-      "description": "Authentic Japanese style ramen with many different flavours of soup bases.",
+      "description": "The place to be for luxury all day breakfast food.",
       "price": "$17",
-      "address": "491 Pakuranga Rd",
+      "address": "J/20-22 Dunrobin Place",
       "suburb": "Highland Park",
-      // Image should be 100px horizontal for consistency
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
+      // Image should be 100px vertical for consistency
+      "image": "images/coffee-club.jpg",
+      "imageAlt": "Coffee club Highland Park interior",
       "position": new google.maps.LatLng(-36.899010, 174.903909)
     },
     {
@@ -35,20 +35,20 @@ var model = {
       "price": "$12",
       "address": "Shop 28, 503 Pakuranga Rd",
       "suburb": "Highland Park",
-      // Image should be 100px horizontal for consistency
+      // Image should be 100px vertical for consistency
       "image": "images/sura.jpg",
       "imageAlt": "Sura delicious food",
       "position": new google.maps.LatLng(-36.899539, 174.907194)
     },
     {
       "title": "Nishiki",
-      "description": "Authentic Japanese style ramen with many different flavours of soup bases.",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
       "price": "$50",
-      "address": "491 Pakuranga Rd",
-      "suburb": "Highland Park",
-      // Image should be 100px horizontal for consistency
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.925612, 174.896527)
     }
   ]
