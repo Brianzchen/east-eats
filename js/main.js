@@ -28,6 +28,7 @@ var viewModel = function() {
     if (self.listButton().open) {
       self.listButton().open = false;
       document.getElementById("map-canvas").style.width = "100%";
+      document.getElementById("markerPanel").style.display = "none";
     } else {
       self.listButton().open = true;
       document.getElementById("map-canvas").style.width = "80%";

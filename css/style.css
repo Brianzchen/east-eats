@@ -97,15 +97,10 @@ h1 {
 
 /* Ajustments for tablet size screens*/
 @media screen and (max-width: 1250px) {
-  html, body, #map-canvas {
-    height: 95.8%;
-  }
+
 }
 
 @media screen and (max-width: 500px) {
-  html, body, #map-canvas {
-    height: 95%;
-  }
   .title {
     width: 100%;
     text-align: center;
@@ -121,5 +116,13 @@ h1 {
   }
   .markerButton {
     width: 33%;
+  }
+
+  #header {
+    height: 20%;
+  }
+
+  #mainDiv {
+    height: 80%;
   }
 }
