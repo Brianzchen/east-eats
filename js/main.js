@@ -117,7 +117,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb) 
   '<h2 class="infoHeading">' +
   title +
   '</h2>' +
-  '<img class="infoImage" src="' +
+  '<img class="infoImage floatRight" src="' +
   image +
   '" alt="' +
   imageAlt +

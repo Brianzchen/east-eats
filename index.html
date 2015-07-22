@@ -13,15 +13,15 @@
   </head>
   <body>
     <header id="header" class="row">
-      <h1 class="col-9">Nieghbourhood Map</h1>
-      <div class="col-1">
-        <input class="searchBar" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
+      <h1 class="col-9 title">Neighbourhood Map</h1>
+      <div class="col-1 searchBar">
+        <input class="floatRight" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
       </div>
-      <div class="col-1">
-        <button data-bind="click: hide, text: hideText"></button>
+      <div class="col-1 hideButton">
+        <button class="floatRight" data-bind="click: hide, text: hideText"></button>
       </div>
-      <div class="col-1">
-        <button data-bind="click: listFunction">Marker List</button>
+      <div class="col-1 markerButton">
+        <button class="floatRight" data-bind="click: listFunction">Marker List</button>
       </div>
     </header>
     <div id="map-canvas" data-bind="map: myMap"></div>
