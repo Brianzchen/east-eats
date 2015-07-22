@@ -31,7 +31,7 @@ var model = {
     },
     {
       "title": "Sura Korean",
-      "description": "Authentic Japanese style ramen with many different flavours of soup bases.",
+      "description": "Good old Korean style stir fry and BBQ. Family owned restaurant for many years",
       "price": "$12",
       "address": "Shop 28, 503 Pakuranga Rd",
       "suburb": "Highland Park",
