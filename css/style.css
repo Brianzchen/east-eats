@@ -76,15 +76,6 @@ h1 {
   html, body, #map-canvas {
     height: 95.8%;
   }
-  .searchBar {
-    width: 25%;
-  }
-  .hideButton {
-    width: 91.66%;
-  }
-  .markerButton {
-    width: 8.33%;
-  }
 }
 
 @media screen and (max-width: 500px) {
@@ -95,13 +86,16 @@ h1 {
     width: 100%;
     text-align: center;
   }
-  .searchBar {
+  .functions {
     width: 100%;
   }
+  .searchBar {
+    width: 33%;
+  }
   .hideButton {
-    width: 50%;
+    width: 33%;
   }
   .markerButton {
-    width: 50%;
+    width: 33%;
   }
 }
