@@ -2,14 +2,27 @@ var viewModel = function() {
   var self = this;
   self.myMap = ko.observable({visibleMarkers: ko.observableArray([])});
   self.search = ko.observable("");
-  self.searchResult = function() {
-    console.log(self.search());
-  }
   self.listButton = ko.observable({
     open: false
   });
   self.hideText = ko.observable("Hide markers");
   var tempMarker = [];
+
+  // Shows only the markers that are related to the search result
+  self.searchResult = function() {
+    //tempMarker = myMap().visibleMarkers.removeAll();
+    for (i = 0; i < model.markers.length; i++) {
+      if (model.markers[i].title.toLowerCase().includes(self.search().toLowerCase()) ||
+      model.markers[i].description.toLowerCase().includes(self.search().toLowerCase()) ||
+      model.markers[i].address.toLowerCase().includes(self.search().toLowerCase()) ||
+      model.markers[i].suburb.toLowerCase().includes(self.search().toLowerCase()) ||
+      model.markers[i].type.toLowerCase().includes(self.search().toLowerCase())) {
+        myMap().marker[i].setMap(myMap().googleMap);
+      } else {
+        myMap().marker[i].setMap(null);
+      }
+    }
+  }
 
   // Events that trigger when user presses the markers button
   self.hide = function() {
@@ -81,10 +94,11 @@ ko.bindingHandlers.map = {
       mapObj.visibleMarkers.push(temp);
     }
 
+    // not sure why I added this here, removed for now.
     // Adds new markers to the markers list
-    for (i = 0; i < mapObj.marker.length; i++) {
-      mapObj.visibleMarkers().push(mapObj.marker[i]);
-    }
+    //for (i = 0; i < mapObj.marker.length; i++) {
+      //mapObj.visibleMarkers().push(mapObj.marker[i]);
+    //}
 
     // Enclosed fucntion that returns the info windows when user clicks
     // on one of the markers

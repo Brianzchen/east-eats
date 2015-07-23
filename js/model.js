@@ -16,7 +16,8 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/tanpopo.jpg",
       "imageAlt": "Tanpopo Highland Park front door",
-      "position": new google.maps.LatLng(-36.899596,174.904265)
+      "position": new google.maps.LatLng(-36.899596,174.904265),
+      "type": "food"
     },
     {
       "title": "Coffee Club",
@@ -27,7 +28,8 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/coffee-club.jpg",
       "imageAlt": "Coffee club Highland Park interior",
-      "position": new google.maps.LatLng(-36.899010, 174.903909)
+      "position": new google.maps.LatLng(-36.899010, 174.903909),
+      "type": "food"
     },
     {
       "title": "Sura Korean",
@@ -38,7 +40,8 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/sura.jpg",
       "imageAlt": "Sura delicious food",
-      "position": new google.maps.LatLng(-36.899539, 174.907194)
+      "position": new google.maps.LatLng(-36.899539, 174.907194),
+      "type": "food"
     },
     {
       "title": "Nishiki",
@@ -49,7 +52,8 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527)
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
     }
   ]
 }
