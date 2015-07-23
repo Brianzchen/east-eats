@@ -9,15 +9,20 @@ var viewModel = function() {
     open: false
   });
   self.hideText = ko.observable("Hide markers");
+  var tempMarker = [];
 
   // Events that trigger when user presses the markers button
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
       this.hideText("Show makers");
       setAllMap(null);
+      tempMarker = myMap().visibleMarkers.removeAll();
     } else {
       this.hideText("Hide markers");
       setAllMap(self.myMap().googleMap);
+      for (i = 0; i < tempMarker.length; i++) {
+        myMap().visibleMarkers.push(tempMarker[i]);
+      }
     }
   };
 
@@ -76,10 +81,10 @@ ko.bindingHandlers.map = {
       mapObj.visibleMarkers.push(temp);
     }
 
+    // Adds new markers to the markers list
     for (i = 0; i < mapObj.marker.length; i++) {
       mapObj.visibleMarkers().push(mapObj.marker[i]);
     }
-    console.log(mapObj.visibleMarkers());
 
     // Enclosed fucntion that returns the info windows when user clicks
     // on one of the markers
