@@ -1,7 +1,6 @@
 var viewModel = function() {
   var self = this;
-  self.myMap = ko.observable({visibleMarkers: ko.observableArray([]),
-    visibleMarkersList: ko.observableArray([])});
+  self.myMap = ko.observable({visibleMarkersList: ko.observableArray([])});
   self.search = ko.observable("");
   self.listButton = ko.observable({
     open: false
@@ -18,10 +17,10 @@ var viewModel = function() {
       model.markers[i].suburb.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].type.toLowerCase().includes(self.search().toLowerCase())) {
         myMap().marker[i].setMap(myMap().googleMap);
-        self.myMap().visibleMarkersList()[i](true);
+        self.myMap().visibleMarkersList()[i].visible(true);
       } else {
         myMap().marker[i].setMap(null);
-        self.myMap().visibleMarkersList()[i](false);
+        self.myMap().visibleMarkersList()[i].visible(false);
       }
     }
   }
@@ -32,12 +31,11 @@ var viewModel = function() {
       this.hideText("Show makers");
       setAllMap(null);
       for (i = 0; i < model.markers.length; i++) {
-        self.myMap().visibleMarkersList()[i](false);
+        self.myMap().visibleMarkersList()[i].visible(false);
       }
     } else {
       this.hideText("Hide markers");
       searchResult();
-      //setAllMap(self.myMap().googleMap);
     }
   };
 
@@ -93,15 +91,14 @@ ko.bindingHandlers.map = {
         imageAlt: model.markers[i].imageAlt
       });
       mapObj.marker.push(temp);
-      mapObj.visibleMarkers.push(temp);
-      mapObj.visibleMarkersList.push(new ko.observable(true));
-    }
 
-    // not sure why I added this here, removed for now.
-    // Adds new markers to the markers list
-    //for (i = 0; i < mapObj.marker.length; i++) {
-      //mapObj.visibleMarkers().push(mapObj.marker[i]);
-    //}
+      // Creates a observable array to hold the list of
+      // markers to know when to show and when no to show.
+      mapObj.visibleMarkersList.push( {
+        visible: ko.observable(true),
+        title: model.markers[i].title
+      });
+    }
 
     // Enclosed fucntion that returns the info windows when user clicks
     // on one of the markers
