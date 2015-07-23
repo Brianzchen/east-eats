@@ -1,6 +1,7 @@
 var viewModel = function() {
   var self = this;
-  self.myMap = ko.observable({visibleMarkers: ko.observableArray([])});
+  self.myMap = ko.observable({visibleMarkers: ko.observableArray([]),
+    visibleMarkersList: ko.observableArray([])});
   self.search = ko.observable("");
   self.listButton = ko.observable({
     open: false
@@ -17,12 +18,10 @@ var viewModel = function() {
       model.markers[i].suburb.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].type.toLowerCase().includes(self.search().toLowerCase())) {
         myMap().marker[i].setMap(myMap().googleMap);
-        myMap().visibleMarkers()[i].visible = true;
-        console.log(myMap().visibleMarkers()[i].visible);
+        self.myMap().visibleMarkersList()[i](true);
       } else {
         myMap().marker[i].setMap(null);
-        myMap().visibleMarkers()[i].visible = false;
-        console.log(myMap().visibleMarkers()[i].visible);
+        self.myMap().visibleMarkersList()[i](false);
       }
     }
   }
@@ -32,6 +31,9 @@ var viewModel = function() {
     if (this.hideText() == "Hide markers") {
       this.hideText("Show makers");
       setAllMap(null);
+      for (i = 0; i < model.markers.length; i++) {
+        self.myMap().visibleMarkersList()[i](false);
+      }
     } else {
       this.hideText("Hide markers");
       searchResult();
@@ -88,11 +90,11 @@ ko.bindingHandlers.map = {
         address: model.markers[i].address,
         suburb: model.markers[i].suburb,
         image: model.markers[i].image,
-        imageAlt: model.markers[i].imageAlt,
-        visible: true
+        imageAlt: model.markers[i].imageAlt
       });
       mapObj.marker.push(temp);
       mapObj.visibleMarkers.push(temp);
+      mapObj.visibleMarkersList.push(new ko.observable(true));
     }
 
     // not sure why I added this here, removed for now.
