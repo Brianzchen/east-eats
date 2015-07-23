@@ -23,6 +23,9 @@
     <div id="mainDiv">
       <div id="markerPanel" class="floatRight">
         <h2>Marker List</h2>
+        <ul data-bind="foreach: self.myMap().visibleMarkers">
+          <li data-bind="text: title"></li>
+        </ul>
       </div>
       <div id="map-canvas" data-bind="map: myMap">
       </div>

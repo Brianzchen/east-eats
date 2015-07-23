@@ -9,7 +9,7 @@ var viewModel = function() {
     open: false
   });
   self.hideText = ko.observable("Hide markers");
-  
+
   // Events that trigger when user presses the markers button
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
@@ -79,7 +79,6 @@ ko.bindingHandlers.map = {
     for (i = 0; i < mapObj.marker.length; i++) {
       mapObj.visibleMarkers().push(mapObj.marker[i]);
     }
-    console.log(mapObj.marker.length);
     console.log(mapObj.visibleMarkers());
 
     // Enclosed fucntion that returns the info windows when user clicks
