@@ -1,15 +1,19 @@
 var viewModel = function() {
   var self = this;
   self.myMap = ko.observable({
+    visibleMarkers: ko.observableArray([]),
     center: ko.observable(model.initialMap.center),
     zoom: ko.observable(model.initialMap.zoom)});
   self.search = ko.observable("");
   self.searchResult = function() {
     console.log(self.search());
   }
+  self.listButton = ko.observable({
+    open: false
+  });
+  self.hideText = ko.observable("Hide markers");
 
   // Events that trigger when user presses the markers button
-  self.hideText = ko.observable("Hide markers");
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
       this.hideText("Show makers");
@@ -21,9 +25,6 @@ var viewModel = function() {
   };
 
   // Displays a list view of all current markers on the map
-  self.listButton = ko.observable({
-    open: false
-  });
   self.listFunction = function() {
     if (self.listButton().open) {
       self.listButton().open = false;
@@ -75,7 +76,9 @@ ko.bindingHandlers.map = {
         imageAlt: model.markers[i].imageAlt,
       });
       mapObj.marker.push(temp);
+      mapObj.visibleMarkers.push(temp);
     }
+
     for (i = 0; i < mapObj.marker.length; i++) {
       var temp = mapObj.marker[i];
       mapObj.marker[i].setMap(mapObj.googleMap);
