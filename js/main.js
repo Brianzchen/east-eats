@@ -1,9 +1,6 @@
 var viewModel = function() {
   var self = this;
-  self.myMap = ko.observable({
-    visibleMarkers: ko.observableArray([]),
-    center: ko.observable(model.initialMap.center),
-    zoom: ko.observable(model.initialMap.zoom)});
+  self.myMap = ko.observable({visibleMarkers: ko.observableArray([])});
   self.search = ko.observable("");
   self.searchResult = function() {
     console.log(self.search());
@@ -12,7 +9,7 @@ var viewModel = function() {
     open: false
   });
   self.hideText = ko.observable("Hide markers");
-
+  
   // Events that trigger when user presses the markers button
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
@@ -49,8 +46,8 @@ ko.bindingHandlers.map = {
 
     // Builds the map defaults
     var mapOptions = {
-      center: ko.utils.unwrapObservable(mapObj.center),
-      zoom: ko.utils.unwrapObservable(mapObj.zoom)
+      center: model.initialMap.center,
+      zoom: model.initialMap.zoom
     };
 
     // Initiates the map
@@ -79,6 +76,14 @@ ko.bindingHandlers.map = {
       mapObj.visibleMarkers.push(temp);
     }
 
+    for (i = 0; i < mapObj.marker.length; i++) {
+      mapObj.visibleMarkers().push(mapObj.marker[i]);
+    }
+    console.log(mapObj.marker.length);
+    console.log(mapObj.visibleMarkers());
+
+    // Enclosed fucntion that returns the info windows when user clicks
+    // on one of the markers
     for (i = 0; i < mapObj.marker.length; i++) {
       var temp = mapObj.marker[i];
       mapObj.marker[i].setMap(mapObj.googleMap);
