@@ -6,11 +6,10 @@ var viewModel = function() {
     open: false
   });
   self.hideText = ko.observable("Hide markers");
-  var tempMarker = [];
+  self.tempMarker = [];
 
   // Shows only the markers that are related to the search result
   self.searchResult = function() {
-    //tempMarker = myMap().visibleMarkers.removeAll();
     for (i = 0; i < model.markers.length; i++) {
       if (model.markers[i].title.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].description.toLowerCase().includes(self.search().toLowerCase()) ||
@@ -18,8 +17,12 @@ var viewModel = function() {
       model.markers[i].suburb.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].type.toLowerCase().includes(self.search().toLowerCase())) {
         myMap().marker[i].setMap(myMap().googleMap);
+        myMap().visibleMarkers()[i].visible = true;
+        console.log(myMap().visibleMarkers()[i].visible);
       } else {
         myMap().marker[i].setMap(null);
+        myMap().visibleMarkers()[i].visible = false;
+        console.log(myMap().visibleMarkers()[i].visible);
       }
     }
   }
@@ -29,13 +32,10 @@ var viewModel = function() {
     if (this.hideText() == "Hide markers") {
       this.hideText("Show makers");
       setAllMap(null);
-      tempMarker = myMap().visibleMarkers.removeAll();
     } else {
       this.hideText("Hide markers");
-      setAllMap(self.myMap().googleMap);
-      for (i = 0; i < tempMarker.length; i++) {
-        myMap().visibleMarkers.push(tempMarker[i]);
-      }
+      searchResult();
+      //setAllMap(self.myMap().googleMap);
     }
   };
 
@@ -89,6 +89,7 @@ ko.bindingHandlers.map = {
         suburb: model.markers[i].suburb,
         image: model.markers[i].image,
         imageAlt: model.markers[i].imageAlt,
+        visible: true
       });
       mapObj.marker.push(temp);
       mapObj.visibleMarkers.push(temp);
