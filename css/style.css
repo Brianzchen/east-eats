@@ -72,6 +72,11 @@ h1 {
   margin-left: 5px;
 }
 
+.markerListHeader {
+  margin-top: 0;
+  margin-left: 20px
+}
+
 #header {
   height: 15%;
 }

@@ -64,7 +64,7 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "position": new google.maps.LatLng(-36.912338, 174.929834),
       "type": "food"
     },
     {
@@ -76,7 +76,7 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "position": new google.maps.LatLng(-36.912174, 174.908042),
       "type": "food"
     },
     {
@@ -88,7 +88,7 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "position": new google.maps.LatLng(-36.928009, 174.899297),
       "type": "food"
     },
     {
@@ -100,8 +100,8 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
-      "type": "food"
+      "position": new google.maps.LatLng(-36.903217, 174.902259),
+      "type": "leisure,fun"
     },
     {
       "title": "Pita Pit Highland Park",
@@ -112,7 +112,7 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "position": new google.maps.LatLng(-36.898874, 174.904271),
       "type": "food"
     },
     {
@@ -124,7 +124,7 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "position": new google.maps.LatLng(-36.880977, 174.899923),
       "type": "food"
     },
     {
@@ -136,7 +136,7 @@ var model = {
       // Image should be 100px vertical for consistency
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
-      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "position": new google.maps.LatLng(-36.899180, 174.901123),
       "type": "food"
     }
   ]
