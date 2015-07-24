@@ -25,7 +25,7 @@
         <h2 class="markerListHeader">Marker List</h2>
         <ul data-bind="foreach: self.myMap().visibleMarkersList">
           <!-- ko if: visible -->
-            <li data-bind="text: title"></li>
+            <li data-bind="text: title, click: findLocation"></li>
           <!-- /ko -->
         </ul>
       </div>

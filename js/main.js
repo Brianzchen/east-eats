@@ -96,7 +96,11 @@ ko.bindingHandlers.map = {
       // markers to know when to show and when no to show.
       mapObj.visibleMarkersList.push( {
         visible: ko.observable(true),
-        title: model.markers[i].title
+        position: model.markers[i].position,
+        title: model.markers[i].title,
+        findLocation: function() {
+          mapObj.googleMap.setCenter(this.position, model.initialMap.zoom);
+        }
       });
     }
 
