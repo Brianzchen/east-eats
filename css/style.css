@@ -3,6 +3,7 @@ html, body, #map-canvas {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .row {
@@ -60,7 +61,6 @@ html, body, #map-canvas {
 }
 
 h1 {
-  font-family: 'Roboto Condensed', sans-serif;
   margin-bottom: 10px;
 }
 
@@ -92,6 +92,7 @@ h1 {
   width: 20%;
   height: 100%;
   display: none;
+  overflow: scroll;
 }
 
 /* Ajustments for tablet size screens */

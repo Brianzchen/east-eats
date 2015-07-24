@@ -54,6 +54,90 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.925612, 174.896527),
       "type": "food"
+    },
+    {
+      "title": "Neighbours",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
+    },
+    {
+      "title": "Viet place avimore Drive",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
+    },
+    {
+      "title": "Ghenghis Khan",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
+    },
+    {
+      "title": "Llyod Elsmore Swimming Pool",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
+    },
+    {
+      "title": "Pita Pit Highland Park",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
+    },
+    {
+      "title": "Marina Thai",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
+    },
+    {
+      "title": "Bruce Lee sushi Highland Park",
+      "description": "Amazing Japanese cuisine, featuring a real taste from Japan. A bit pricey but great for those special occasions.",
+      "price": "$50",
+      "address": "9 Torrens Rd",
+      "suburb": "Burswood",
+      // Image should be 100px vertical for consistency
+      "image": "images/nishiki.jpg",
+      "imageAlt": "Nishiki Botany interior",
+      "position": new google.maps.LatLng(-36.925612, 174.896527),
+      "type": "food"
     }
   ]
 }
