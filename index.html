@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neighbourhood Map</title>
+    <title>East Eats</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -13,7 +13,10 @@
   </head>
   <body>
     <header id="header" class="row">
-      <h1 class="col-11 title">Neighbourhood Map</h1>
+      <div class="col-11 title">
+        <h1 class="col-12">East Eats</h1>
+        <h2 class="col-12">Auckland NZ</h2>
+      </div>
       <div class="col-1 functions">
         <input class="floatRight  searchBar" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
         <button class="floatRight hideButton" data-bind="click: hide, text: hideText"></button>
@@ -22,7 +25,7 @@
     </header>
     <div id="mainDiv">
       <div id="markerPanel" class="floatRight">
-        <h2 class="markerListHeader">Marker List</h2>
+        <h3 class="markerListHeader">Marker List</h3>
         <ul data-bind="foreach: self.myMap().visibleMarkersList">
           <!-- ko if: visible -->
             <li data-bind="text: title, click: findLocation"></li>

@@ -61,7 +61,14 @@ html, body, #map-canvas {
 }
 
 h1 {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+h2 {
+  margin-top: 0;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .floatRight {
@@ -140,7 +147,7 @@ h1 {
 
 /* Incase the window gets too short, readjust so the function buttons
   are still visible */
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 600px) {
   #header {
     height: 25%;
   }
@@ -150,7 +157,7 @@ h1 {
   }
 }
 
-@media screen and (min-height: 600px) {
+/*@media screen and (min-height: 600px) {
   #header {
     height: 15%;
   }
@@ -158,7 +165,7 @@ h1 {
   #mainDiv {
     height: 85%;
   }
-}
+}*/
 
 @media screen and (min-height: 1000px) {
   #header {

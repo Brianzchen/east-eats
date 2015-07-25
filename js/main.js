@@ -15,7 +15,7 @@ var viewModel = function() {
       model.markers[i].description.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].address.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].suburb.toLowerCase().includes(self.search().toLowerCase()) ||
-      model.markers[i].type.toLowerCase().includes(self.search().toLowerCase())) {
+      model.markers[i].keyword.toLowerCase().includes(self.search().toLowerCase())) {
         myMap().marker[i].setMap(myMap().googleMap);
         self.myMap().visibleMarkersList()[i].visible(true);
       } else {
