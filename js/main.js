@@ -99,7 +99,8 @@ ko.bindingHandlers.map = {
         position: model.markers[i].position,
         title: model.markers[i].title,
         findLocation: function() {
-          mapObj.googleMap.setCenter(this.position, model.initialMap.zoom);
+          mapObj.googleMap.setCenter(this.position);
+          mapObj.googleMap.setZoom(model.initialMap.markerListZoom);
         }
       });
     }

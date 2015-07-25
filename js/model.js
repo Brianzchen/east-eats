@@ -4,7 +4,8 @@ var model = {
   "initialMap":
   {
     "center": new google.maps.LatLng(-36.912771, 174.915997),
-    "zoom": 14
+    "zoom": 14,
+    "markerListZoom": 17
   },
   "markers": [
     {
