@@ -112,6 +112,20 @@ ko.bindingHandlers.map = {
       mapObj.marker[i].setMap(mapObj.googleMap);
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
+          var yelpRequestTimeout = setTimeout(function(){
+            console.log("Failed to get Wikipedia resources");
+          }, 8000);
+
+          $.ajax({
+            url:  model.markers[mark].yelpQuery,
+            dataType: "jsonp",
+            success: function(response) {
+              console.log(response);
+
+              clearTimeout(wikiRequestTimeout);
+            }
+          });
+
           mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
             mapObj.marker[mark].image,
             mapObj.marker[mark].imageAlt,

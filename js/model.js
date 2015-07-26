@@ -18,7 +18,8 @@ var model = {
       "image": "images/tanpopo.jpg",
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.899596,174.904265),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "http://api.yelp.com/v2/business/tanpopo-howick-auckland?cc=NZ&lang_filter=true"
     },
     {
       "title": "Coffee Club / Highland Park",
