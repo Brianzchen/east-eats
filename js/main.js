@@ -5,7 +5,7 @@ var viewModel = function() {
   self.listButton = ko.observable({
     open: false
   });
-  self.hideText = ko.observable("Hide markers");
+  self.hideText = ko.observable("Hide Markers");
   self.tempMarker = [];
 
   // Shows only the markers that are related to the search result
@@ -28,13 +28,13 @@ var viewModel = function() {
   // Events that trigger when user presses the markers button
   self.hide = function() {
     if (this.hideText() == "Hide markers") {
-      this.hideText("Show makers");
+      this.hideText("Show Makers");
       setAllMap(null);
       for (i = 0; i < model.markers.length; i++) {
         self.myMap().visibleMarkersList()[i].visible(false);
       }
     } else {
-      this.hideText("Hide markers");
+      this.hideText("Hide Markers");
       searchResult();
     }
   };
