@@ -152,6 +152,7 @@ ko.bindingHandlers.map = {
                       mapObj.marker[mark].address,
                       mapObj.marker[mark].suburb,
                       data.rating,
+                      data.review_count,
                       data.url));
                     mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
                 }
@@ -200,7 +201,7 @@ function setAllMap(map) {
 }
 
 // Helpful content creator for the Google maps info window
-function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, rating, url) {
+function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, rating, reviewCount, url) {
   var heading = '<div id="infoContent" class="row">' +
     '<h3 class="infoHeading col-12">' +
     title +
@@ -227,27 +228,30 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
   } else {
     var infoImage = '';
   }
-  var ratingImage = '<div class="col-12"><img class="infoRating" src="';
+  var ratingImage = '<div class="col-6"><img class="infoRating" src="';
   if (rating !== undefined) {
     if (rating == 5) {
-      ratingImage += 'images/star5.png"></div>';
+      ratingImage += 'images/star5.png">';
     } else if (rating == 4.5) {
-      ratingImage += 'images/star45.png"></div>';
+      ratingImage += 'images/star45.png">';
     } else if (rating == 4) {
-      ratingImage += 'images/star4.png"></div>';
+      ratingImage += 'images/star4.png">';
     } else if (rating == 3.5) {
-      ratingImage += 'images/star35.png"></div>';
+      ratingImage += 'images/star35.png">';
     } else if (rating == 3) {
-      ratingImage += 'images/star3.png"></div>';
+      ratingImage += 'images/star3.png">';
     } else if (rating == 2.5) {
-      ratingImage += 'images/star25.png"></div>';
+      ratingImage += 'images/star25.png">';
     } else if (rating == 2) {
-      ratingImage += 'images/star2.png"></div>';
+      ratingImage += 'images/star2.png">';
     } else if (rating == 1.5) {
-      ratingImage += 'images/star15.png"></div>';
+      ratingImage += 'images/star15.png">';
     } else if (rating == 1) {
-      ratingImage += 'images/star1.png"></div>';
+      ratingImage += 'images/star1.png">';
     }
+    ratingImage += '</div><p class="col-6 infoReview">Based on ' +
+      reviewCount +
+      ' review</p>';
   } else {
     ratingImage += 'images/star0.png"></div>' +
       '<p class="infoNoYelp col-12">' +
