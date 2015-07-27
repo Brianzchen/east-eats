@@ -145,12 +145,13 @@ ko.bindingHandlers.map = {
                     console.log(data);
 
                     mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
-                      mapObj.marker[mark].image,
-                      mapObj.marker[mark].imageAlt,
+                      data.image_url,
+                      "Image taken from yelp.com",
                       mapObj.marker[mark].price,
                       mapObj.marker[mark].description,
                       mapObj.marker[mark].address,
-                      mapObj.marker[mark].suburb));
+                      mapObj.marker[mark].suburb,
+                      data.rating));
                     mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
                 }
             });
@@ -198,28 +199,61 @@ function setAllMap(map) {
 }
 
 // Helpful content creator for the Google maps info window
-function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb) {
-  return '<div id="infoContent">' +
-  '<h2 class="infoHeading">' +
-  title +
-  '</h2>' +
-  '<img class="infoImage floatRight" src="' +
-  image +
-  '" alt="' +
-  imageAlt +
-  '">' +
-  '<div id="infoBodyContent">' +
-  '<p>Approximate price range per person: <i>' +
-  price +
-  '</i></p>'+
-  '<p>'+
-  para1 +
-  '</p>'+
-  '<p>'+
-  address +
-  '<br>' +
-  suburb +
-  '</p>'+
-  '</div>'+
-  '</div>'
+function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, rating, url) {
+  var heading = '<div id="infoContent">' +
+    '<h2 class="infoHeading">' +
+    title +
+    '</h2>';
+  if (image !== "undefined") {
+    var infoImage = '<img class="infoImage floatRight" src="' +
+      image +
+      '" alt="' +
+      imageAlt +
+      '">';
+  } else {
+    console.log("hihi");
+    var infoImage = '';
+  }
+  var body = '<div id="infoBodyContent">' +
+    '<p>Approximate price range per person: <i>' +
+    price +
+    '</i></p>'+
+    '<p>'+
+    para1 +
+    '</p>'+
+    '<p>'+
+    address +
+    '<br>' +
+    suburb +
+    '</p>' +
+    '<br>' +
+    '<img class="infoRating" src="';
+  if (rating !== 'undefined') {
+    if (rating == 5) {
+      var ratingImage = "images/star5.png";
+    } else if (rating == 4.5) {
+      var ratingImage = "images/star45.png";
+    } else if (rating == 4) {
+      var ratingImage = "images/star4.png";
+    } else if (rating == 3.5) {
+      var ratingImage = "images/star35.png";
+    } else if (rating == 3) {
+      var ratingImage = "images/star3.png";
+    } else if (rating == 2.5) {
+      var ratingImage = "images/star25.png";
+    } else if (rating == 2) {
+      var ratingImage = "images/star2.png";
+    } else if (rating == 1.5) {
+      var ratingImage = "images/star15.png";
+    } else if (rating == 1) {
+      var ratingImage = "images/star1.png";
+    }
+  } else {
+    console.log("noyelp");
+    var ratingImage = "images/star0.png";
+  }
+  var end = '</div>'+
+    '</div>';
+
+  return heading + infoImage + body + ratingImage + end;
 }
