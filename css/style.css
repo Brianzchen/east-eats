@@ -85,7 +85,29 @@ h2 {
 
 .markerListHeader {
   margin-top: 0;
-  margin-left: 20px
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.markerListSub {
+  margin-top: 10px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: red;
+  padding-left: 0;
+  text-align: center;
 }
 
 #header {
