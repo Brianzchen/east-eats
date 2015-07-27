@@ -71,7 +71,11 @@ h2 {
   margin-left: 10px;
 }
 
-.hideButton, .markerButton, .searchBar {
+.searchBar {
+  width: 98%;
+}
+
+.hideButton, .markerButton {
   width: 100%;
 }
 

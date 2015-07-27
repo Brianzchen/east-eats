@@ -10,6 +10,7 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRwEMwFtUHsKuH07WSvvziHAkZa6Nd93Q">
     </script>
+    <!-- Loads the required libraries needed for application-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
     <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
@@ -23,7 +24,7 @@
         <h2 class="col-12">Auckland NZ</h2>
       </div>
       <div class="col-2 functions">
-        <input class="floatRight  searchBar" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
+        <input class="floatRight  searchBar" placeholder="Looking for something?" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
         <button class="floatRight hideButton" data-bind="click: hide, text: hideText"></button>
         <button class="floatRight markerButton" data-bind="click: listFunction">Marker List</button>
       </div>
