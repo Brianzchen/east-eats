@@ -202,9 +202,9 @@ function setAllMap(map) {
 // Helpful content creator for the Google maps info window
 function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, rating, url) {
   var heading = '<div id="infoContent" class="row">' +
-    '<h2 class="infoHeading col-12">' +
+    '<h3 class="infoHeading col-12">' +
     title +
-    '</h2>';
+    '</h3>';
   var body = '<div id="infoBodyContent" class="col-7">' +
     '<p>Approximate price range per person: <i>' +
     price +
