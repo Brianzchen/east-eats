@@ -151,7 +151,8 @@ ko.bindingHandlers.map = {
                       mapObj.marker[mark].description,
                       mapObj.marker[mark].address,
                       mapObj.marker[mark].suburb,
-                      data.rating));
+                      data.rating,
+                      data.url));
                     mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
                 }
             });
@@ -200,60 +201,69 @@ function setAllMap(map) {
 
 // Helpful content creator for the Google maps info window
 function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, rating, url) {
-  var heading = '<div id="infoContent">' +
-    '<h2 class="infoHeading">' +
+  var heading = '<div id="infoContent" class="row">' +
+    '<h2 class="infoHeading col-12">' +
     title +
     '</h2>';
-  if (image !== "undefined") {
-    var infoImage = '<img class="infoImage floatRight" src="' +
-      image +
-      '" alt="' +
-      imageAlt +
-      '">';
-  } else {
-    console.log("hihi");
-    var infoImage = '';
-  }
-  var body = '<div id="infoBodyContent">' +
+  var body = '<div id="infoBodyContent" class="col-7">' +
     '<p>Approximate price range per person: <i>' +
     price +
     '</i></p>'+
     '<p>'+
     para1 +
     '</p>'+
-    '<p>'+
+    '<p class="infoAddress">'+
     address +
     '<br>' +
     suburb +
     '</p>' +
-    '<br>' +
-    '<img class="infoRating" src="';
-  if (rating !== 'undefined') {
+    '</div>';
+  if (image !== undefined) {
+    var infoImage = '<img class="infoImage floatRight col-4" src="' +
+      image +
+      '" alt="' +
+      imageAlt +
+      '">';
+  } else {
+    var infoImage = '';
+  }
+  var ratingImage = '<div class="col-12"><img class="infoRating" src="';
+  if (rating !== undefined) {
     if (rating == 5) {
-      var ratingImage = "images/star5.png";
+      ratingImage += 'images/star5.png"></div>';
     } else if (rating == 4.5) {
-      var ratingImage = "images/star45.png";
+      ratingImage += 'images/star45.png"></div>';
     } else if (rating == 4) {
-      var ratingImage = "images/star4.png";
+      ratingImage += 'images/star4.png"></div>';
     } else if (rating == 3.5) {
-      var ratingImage = "images/star35.png";
+      ratingImage += 'images/star35.png"></div>';
     } else if (rating == 3) {
-      var ratingImage = "images/star3.png";
+      ratingImage += 'images/star3.png"></div>';
     } else if (rating == 2.5) {
-      var ratingImage = "images/star25.png";
+      ratingImage += 'images/star25.png"></div>';
     } else if (rating == 2) {
-      var ratingImage = "images/star2.png";
+      ratingImage += 'images/star2.png"></div>';
     } else if (rating == 1.5) {
-      var ratingImage = "images/star15.png";
+      ratingImage += 'images/star15.png"></div>';
     } else if (rating == 1) {
-      var ratingImage = "images/star1.png";
+      ratingImage += 'images/star1.png"></div>';
     }
   } else {
-    console.log("noyelp");
-    var ratingImage = "images/star0.png";
+    ratingImage += 'images/star0.png"></div>' +
+      '<p class="infoNoYelp col-12">' +
+      "This restaurant hasn't been rated yet, why not try it and let us know!</p>";
   }
-  var end = '</div>'+
+  if (url !== undefined) {
+    var urlLine = '<a class="col-10" href="' +
+      url +
+      '">' +
+      url +
+      '</a>';
+  } else {
+    var urlLine = "";
+  }
+  var end = '<img class="floatRight col-2" src="images/yelp_logo.png" alt="yelp logo">' +
     '</div>';
 
-  return heading + infoImage + body + ratingImage + end;
+  return heading + body + infoImage + ratingImage + urlLine + end;
 }
