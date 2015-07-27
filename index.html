@@ -32,7 +32,7 @@
     <div id="mainDiv">
       <div id="markerPanel" class="floatRight">
         <h3 class="markerListHeader">Marker List</h3>
-        <h4 class="markerListSub">Click to be taken to a location</h4>
+        <p class="markerListSub">Click to be taken to a location</p>
         <ul data-bind="foreach: self.myMap().visibleMarkersList">
           <!-- ko if: visible -->
             <li class="markerInList" data-bind="text: title, click: findLocation"></li>
