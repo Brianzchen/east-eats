@@ -7,6 +7,14 @@ var model = {
     "zoom": 14,
     "markerListZoom": 17
   },
+  "yelpKeys":
+  {
+    "consumerKey": "YGvAOYaSuVPLNZQjlnsNEg",
+    "consumerSecret": "h7Etv1nEP8c8ytZlSdtYPWftNe8",
+    "accessToken": "MbjXN_q5hbQEY8QZGg00qY3RWOq7fjaC",
+    "accessTokenSecret": "739IDgl-a4PLdz5__md3-E028js",
+    "signatureMethod": "HMAC-SHA1"
+  },
   "markers": [
     {
       "title": "Tanpopo Japanese Ramen",

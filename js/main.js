@@ -112,29 +112,16 @@ ko.bindingHandlers.map = {
       mapObj.marker[i].setMap(mapObj.googleMap);
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
-          var auth = {
-            //
-            // Update with your auth tokens.
-            //
-            consumerKey: "YGvAOYaSuVPLNZQjlnsNEg",
-            consumerSecret: "h7Etv1nEP8c8ytZlSdtYPWftNe8",
-            accessToken: "MbjXN_q5hbQEY8QZGg00qY3RWOq7fjaC",
-            accessTokenSecret: "739IDgl-a4PLdz5__md3-E028js",
-            serviceProvider: {
-              signatureMethod: "HMAC-SHA1"
-            }
-          };
-
           var accessor = {
-              consumerSecret : auth.consumerSecret,
-              tokenSecret : auth.accessTokenSecret
+              consumerSecret : model.yelpKeys.consumerSecret,
+              tokenSecret : model.yelpKeys.accessTokenSecret
           };
 
           parameters = [];
           parameters.push(['callback', 'cb']);
-          parameters.push(['oauth_consumer_key', auth.consumerKey]);
-          parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
-          parameters.push(['oauth_token', auth.accessToken]);
+          parameters.push(['oauth_consumer_key', model.yelpKeys.consumerKey]);
+          parameters.push(['oauth_consumer_secret', model.yelpKeys.consumerSecret]);
+          parameters.push(['oauth_token', model.yelpKeys.accessToken]);
           parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
 
           var message = {
