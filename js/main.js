@@ -112,7 +112,56 @@ ko.bindingHandlers.map = {
       mapObj.marker[i].setMap(mapObj.googleMap);
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
-        
+          var auth = {
+            //
+            // Update with your auth tokens.
+            //
+            consumerKey : "YGvAOYaSuVPLNZQjlnsNEg",
+            consumerSecret : "h7Etv1nEP8c8ytZlSdtYPWftNe8",
+            accessToken : "MbjXN_q5hbQEY8QZGg00qY3RWOq7fjaC",
+            // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+            // You wouldn't actually want to expose your access token secret like this in a real application.
+            accessTokenSecret : "739IDgl-a4PLdz5__md3-E028js",
+            serviceProvider : {
+              signatureMethod : "HMAC-SHA1"
+            }
+          };
+          
+          var terms = 'food';
+          var near = 'San+Francisco';
+
+          var accessor = {
+              consumerSecret : auth.consumerSecret,
+              tokenSecret : auth.accessTokenSecret
+          };
+          parameters = [];
+          parameters.push(['callback', 'cb']);
+          parameters.push(['oauth_consumer_key', auth.consumerKey]);
+          parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+          parameters.push(['oauth_token', auth.accessToken]);
+          parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+
+          var message = {
+              'action' : 'http://api.yelp.com/v2/business/tanpopo-howick-auckland',
+              'method' : 'GET',
+              'parameters' : parameters
+          };
+
+          OAuth.setTimestampAndNonce(message);
+          OAuth.SignatureMethod.sign(message, accessor);
+
+          var parameterMap = OAuth.getParameterMap(message.parameters);
+          console.log(parameterMap);
+
+          $.ajax({
+              'url' : message.action,
+              'data' : parameterMap,
+              'dataType' : 'jsonp',
+              'jsonpCallback' : 'cb',
+              'success' : function(data, textStats, XMLHttpRequest) {
+                  console.log(data);
+              }
+          });
 
           mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
             mapObj.marker[mark].image,
