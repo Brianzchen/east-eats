@@ -26,15 +26,15 @@ var viewModel = function() {
   }
 
   // Events that trigger when user presses the markers button
-  self.hide = function() {
-    if (this.hideText() == "Hide markers") {
-      this.hideText("Show Makers");
+  self.hide = function(data) {
+    if (self.hideText() == "Hide Markers") {
+      self.hideText("Show Makers");
       setAllMap(null);
       for (i = 0; i < model.markers.length; i++) {
         self.myMap().visibleMarkersList()[i].visible(false);
       }
     } else {
-      this.hideText("Hide Markers");
+      self.hideText("Hide Markers");
       searchResult();
     }
   };
