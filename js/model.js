@@ -7,6 +7,12 @@ var model = {
     "zoom": 14,
     "markerListZoom": 17
   },
+  "yelpKeys": {
+    "oauth_consumer_key": "YGvAOYaSuVPLNZQjlnsNEg",
+    "oauth_consumer_secret": "h7Etv1nEP8c8ytZlSdtYPWftNe8",
+    "oauth_token": "MbjXN_q5hbQEY8QZGg00qY3RWOq7fjaC",
+    "oauth_token_secret": "739IDgl-a4PLdz5__md3-E028js"
+  },
   "markers": [
     {
       "title": "Tanpopo Japanese Ramen",
@@ -19,7 +25,7 @@ var model = {
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.899596,174.904265),
       "keyword": "food",
-      "yelpQuery": "http://api.yelp.com/v2/business/tanpopo-howick-auckland?cc=NZ&lang_filter=true"
+      "yelpQuery": "tanpopo-howick-auckland?cc=NZ&lang_filter=true"
     },
     {
       "title": "Coffee Club / Highland Park",
