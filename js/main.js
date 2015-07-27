@@ -258,7 +258,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
       "This restaurant hasn't been rated yet, why not try it and let us know!</p>";
   }
   if (url !== undefined) {
-    var urlLine = '<a class="col-10" href="' +
+    var urlLine = '<a target="_blank" class="col-10" href="' +
       url +
       '">' +
       url +
@@ -266,7 +266,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
   } else {
     var urlLine = "";
   }
-  var end = '<img class="floatRight col-2" src="images/yelp_logo.png" alt="yelp logo">' +
+  var end = '<a class="col-2" target="_blank" href="http://nz.yelp.com/"><img class="floatRight col-12" src="images/yelp_logo.png" alt="yelp logo"></a>' +
     '</div>';
 
   return heading + body + infoImage + ratingImage + urlLine + end;
