@@ -1,8 +1,7 @@
 html, body, #map-canvas {
-  height: 100%%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -156,16 +155,6 @@ h2 {
     height: 75%;
   }
 }
-
-/*@media screen and (min-height: 600px) {
-  #header {
-    height: 15%;
-  }
-
-  #mainDiv {
-    height: 85%;
-  }
-}*/
 
 @media screen and (min-height: 1000px) {
   #header {
