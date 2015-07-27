@@ -19,7 +19,7 @@ var model = {
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.899596,174.904265),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland?cc=NZ&lang_filter=true"
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Coffee Club / Highland Park",
@@ -31,7 +31,8 @@ var model = {
       "image": "images/coffee-club.jpg",
       "imageAlt": "Coffee club Highland Park interior",
       "position": new google.maps.LatLng(-36.899010, 174.903909),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Sura Korean",
@@ -43,7 +44,8 @@ var model = {
       "image": "images/sura.jpg",
       "imageAlt": "Sura delicious food",
       "position": new google.maps.LatLng(-36.899539, 174.907194),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Nishiki",
@@ -55,7 +57,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.925612, 174.896527),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Neighbours",
@@ -67,7 +70,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.912338, 174.929834),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Viet Hoa Vietnamese Restaurant",
@@ -79,7 +83,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.912174, 174.908042),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Genghis Khan",
@@ -91,7 +96,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.928009, 174.899297),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Pita Pit / Highland Park",
@@ -103,7 +109,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.898874, 174.904271),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Marina Thai",
@@ -115,7 +122,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.880977, 174.899923),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Bruce Lee Sushi / Highland Park",
@@ -127,7 +135,8 @@ var model = {
       "image": "images/nishiki.jpg",
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.899180, 174.901123),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Chongqing Cuisine",
@@ -139,7 +148,8 @@ var model = {
       "image": "images/tanpopo.jpg",
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.912620, 174.929364),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Sri Mahkota",
@@ -151,7 +161,8 @@ var model = {
       "image": "images/tanpopo.jpg",
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.924927, 174.897249),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     },
     {
       "title": "Kyou Sushi",
@@ -163,7 +174,8 @@ var model = {
       "image": "images/tanpopo.jpg",
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.902144, 174.904867),
-      "keyword": "food"
+      "keyword": "food",
+      "yelpQuery": "tanpopo-howick-auckland"
     }
   ]
 }

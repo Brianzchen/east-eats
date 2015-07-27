@@ -126,7 +126,7 @@ ko.bindingHandlers.map = {
               signatureMethod : "HMAC-SHA1"
             }
           };
-          
+
           var terms = 'food';
           var near = 'San+Francisco';
 
@@ -142,7 +142,7 @@ ko.bindingHandlers.map = {
           parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
 
           var message = {
-              'action' : 'http://api.yelp.com/v2/business/tanpopo-howick-auckland',
+              'action' : 'http://api.yelp.com/v2/business/' + model.markers[mark].yelpQuery,
               'method' : 'GET',
               'parameters' : parameters
           };
@@ -151,7 +151,6 @@ ko.bindingHandlers.map = {
           OAuth.SignatureMethod.sign(message, accessor);
 
           var parameterMap = OAuth.getParameterMap(message.parameters);
-          console.log(parameterMap);
 
           $.ajax({
               'url' : message.action,
@@ -160,17 +159,19 @@ ko.bindingHandlers.map = {
               'jsonpCallback' : 'cb',
               'success' : function(data, textStats, XMLHttpRequest) {
                   console.log(data);
+
+                  mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+                    mapObj.marker[mark].image,
+                    mapObj.marker[mark].imageAlt,
+                    mapObj.marker[mark].price,
+                    mapObj.marker[mark].description,
+                    mapObj.marker[mark].address,
+                    mapObj.marker[mark].suburb));
+                  mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
               }
           });
 
-          mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
-            mapObj.marker[mark].image,
-            mapObj.marker[mark].imageAlt,
-            mapObj.marker[mark].price,
-            mapObj.marker[mark].description,
-            mapObj.marker[mark].address,
-            mapObj.marker[mark].suburb));
-          mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+
         };
       })(i));
     }
