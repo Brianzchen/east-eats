@@ -23,8 +23,6 @@ var model = {
       "price": "$13",
       "address": "491 Pakuranga Rd",
       "suburb": "Highland Park",
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.899596,174.904265),
       "keyword": "food",
       "yelpQuery": "tanpopo-howick-auckland"
@@ -36,8 +34,6 @@ var model = {
       "price": "$17",
       "address": "J/20-22 Dunrobin Place",
       "suburb": "Highland Park",
-      "image": "images/coffee-club.jpg",
-      "imageAlt": "Coffee club Highland Park interior",
       "position": new google.maps.LatLng(-36.899010, 174.903909),
       "keyword": "food",
       "yelpQuery": "no-yelp"
@@ -49,8 +45,6 @@ var model = {
       "price": "$12",
       "address": "Shop 28, 503 Pakuranga Rd",
       "suburb": "Highland Park",
-      "image": "images/sura.jpg",
-      "imageAlt": "Sura delicious food",
       "position": new google.maps.LatLng(-36.899539, 174.907194),
       "keyword": "food",
       "yelpQuery": "no-yelp"
@@ -62,8 +56,6 @@ var model = {
       "price": "$50",
       "address": "9 Torrens Rd",
       "suburb": "Burswood",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.925612, 174.896527),
       "keyword": "food",
       "yelpQuery": "nishiki-japanese-restaurant-botany-downs"
@@ -75,8 +67,6 @@ var model = {
       "price": "$12",
       "address": "113 Meadowland Dr.",
       "suburb": "Somerville",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.912338, 174.929834),
       "keyword": "food",
       "yelpQuery": "no-yelp"
@@ -88,8 +78,6 @@ var model = {
       "price": "$12",
       "address": "168F Aviemore Dr",
       "suburb": "Highland Park",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.912174, 174.908042),
       "keyword": "food",
       "yelpQuery": "viet-hoa-auckland-2"
@@ -101,8 +89,6 @@ var model = {
       "price": "$50",
       "address": "317 Ti Rakau Drive",
       "suburb": "East Tamaki",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.928009, 174.899297),
       "keyword": "food",
       "yelpQuery": "genghis-khan-auckland-2"
@@ -114,8 +100,6 @@ var model = {
       "price": "$10",
       "address": "491 Pakuranga Rd,",
       "suburb": "Highland Park",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.898874, 174.904271),
       "keyword": "food",
       "yelpQuery": "no-yelp"
@@ -127,8 +111,6 @@ var model = {
       "price": "$25",
       "address": "The Promenade Building Shop C5/1 Ara-Tai",
       "suburb": "Half Moon Bay",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.880977, 174.899923),
       "keyword": "food",
       "yelpQuery": "marina-thai-auckland"
@@ -140,8 +122,6 @@ var model = {
       "price": "$14",
       "address": "Unit 4, 490 Pakuranga Road",
       "suburb": "Highland Park",
-      "image": "images/nishiki.jpg",
-      "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.899180, 174.901123),
       "keyword": "food",
       "yelpQuery": "no-yelp"
@@ -153,8 +133,6 @@ var model = {
       "price": "$12",
       "address": "Shop 7 Unit 6/119 Meadowland Drive",
       "suburb": "Somerville",
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.912620, 174.929364),
       "keyword": "food",
       "yelpQuery": "no-yelp"
@@ -166,8 +144,6 @@ var model = {
       "price": "$25",
       "address": "22D Torrens Road",
       "suburb": "Burswood",
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.924927, 174.897249),
       "keyword": "food",
       "yelpQuery": "sri-mahkota-auckland-2"
@@ -179,8 +155,6 @@ var model = {
       "price": "$10",
       "address": "12/29 Aviemore Drive",
       "suburb": "Highland Park",
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.902144, 174.904867),
       "keyword": "food",
       "yelpQuery": "kyou-sushi-auckland"
@@ -192,8 +166,6 @@ var model = {
       "price": "$16",
       "address": "1/17 Aviemore Drive",
       "suburb": "Highland Park",
-      "image": "images/tanpopo.jpg",
-      "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.900900, 174.905152),
       "keyword": "food",
       "yelpQuery": "sa-rang-bang-korean-restaurant-auckland"
