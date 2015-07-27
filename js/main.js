@@ -116,24 +116,20 @@ ko.bindingHandlers.map = {
             //
             // Update with your auth tokens.
             //
-            consumerKey : "YGvAOYaSuVPLNZQjlnsNEg",
-            consumerSecret : "h7Etv1nEP8c8ytZlSdtYPWftNe8",
-            accessToken : "MbjXN_q5hbQEY8QZGg00qY3RWOq7fjaC",
-            // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
-            // You wouldn't actually want to expose your access token secret like this in a real application.
-            accessTokenSecret : "739IDgl-a4PLdz5__md3-E028js",
-            serviceProvider : {
-              signatureMethod : "HMAC-SHA1"
+            consumerKey: "YGvAOYaSuVPLNZQjlnsNEg",
+            consumerSecret: "h7Etv1nEP8c8ytZlSdtYPWftNe8",
+            accessToken: "MbjXN_q5hbQEY8QZGg00qY3RWOq7fjaC",
+            accessTokenSecret: "739IDgl-a4PLdz5__md3-E028js",
+            serviceProvider: {
+              signatureMethod: "HMAC-SHA1"
             }
           };
-
-          var terms = 'food';
-          var near = 'San+Francisco';
 
           var accessor = {
               consumerSecret : auth.consumerSecret,
               tokenSecret : auth.accessTokenSecret
           };
+
           parameters = [];
           parameters.push(['callback', 'cb']);
           parameters.push(['oauth_consumer_key', auth.consumerKey]);
@@ -152,26 +148,35 @@ ko.bindingHandlers.map = {
 
           var parameterMap = OAuth.getParameterMap(message.parameters);
 
-          $.ajax({
-              'url' : message.action,
-              'data' : parameterMap,
-              'dataType' : 'jsonp',
-              'jsonpCallback' : 'cb',
-              'success' : function(data, textStats, XMLHttpRequest) {
-                  console.log(data);
+          if (model.markers[mark].yelpQuery !== "no-yelp") {
+            $.ajax({
+                'url' : message.action,
+                'data' : parameterMap,
+                'dataType' : 'jsonp',
+                'jsonpCallback' : 'cb',
+                'success' : function(data, textStats, XMLHttpRequest) {
+                    console.log(data);
 
-                  mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
-                    mapObj.marker[mark].image,
-                    mapObj.marker[mark].imageAlt,
-                    mapObj.marker[mark].price,
-                    mapObj.marker[mark].description,
-                    mapObj.marker[mark].address,
-                    mapObj.marker[mark].suburb));
-                  mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
-              }
-          });
-
-
+                    mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+                      mapObj.marker[mark].image,
+                      mapObj.marker[mark].imageAlt,
+                      mapObj.marker[mark].price,
+                      mapObj.marker[mark].description,
+                      mapObj.marker[mark].address,
+                      mapObj.marker[mark].suburb));
+                    mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+                }
+            });
+          } else {
+            mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+              mapObj.marker[mark].image,
+              mapObj.marker[mark].imageAlt,
+              mapObj.marker[mark].price,
+              mapObj.marker[mark].description,
+              mapObj.marker[mark].address,
+              mapObj.marker[mark].suburb));
+            mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+          }
         };
       })(i));
     }

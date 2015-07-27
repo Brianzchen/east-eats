@@ -32,7 +32,7 @@ var model = {
       "imageAlt": "Coffee club Highland Park interior",
       "position": new google.maps.LatLng(-36.899010, 174.903909),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "no-yelp"
     },
     {
       "title": "Sura Korean",
@@ -45,7 +45,7 @@ var model = {
       "imageAlt": "Sura delicious food",
       "position": new google.maps.LatLng(-36.899539, 174.907194),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "no-yelp"
     },
     {
       "title": "Nishiki",
@@ -58,7 +58,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.925612, 174.896527),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "nishiki-japanese-restaurant-botany-downs"
     },
     {
       "title": "Neighbours",
@@ -71,7 +71,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.912338, 174.929834),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "no-yelp"
     },
     {
       "title": "Viet Hoa Vietnamese Restaurant",
@@ -84,7 +84,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.912174, 174.908042),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "viet-hoa-auckland-2"
     },
     {
       "title": "Genghis Khan",
@@ -97,7 +97,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.928009, 174.899297),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "genghis-khan-auckland-2"
     },
     {
       "title": "Pita Pit / Highland Park",
@@ -110,7 +110,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.898874, 174.904271),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "no-yelp"
     },
     {
       "title": "Marina Thai",
@@ -123,7 +123,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.880977, 174.899923),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "marina-thai-auckland"
     },
     {
       "title": "Bruce Lee Sushi / Highland Park",
@@ -136,7 +136,7 @@ var model = {
       "imageAlt": "Nishiki Botany interior",
       "position": new google.maps.LatLng(-36.899180, 174.901123),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "no-yelp"
     },
     {
       "title": "Chongqing Cuisine",
@@ -149,7 +149,7 @@ var model = {
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.912620, 174.929364),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "no-yelp"
     },
     {
       "title": "Sri Mahkota",
@@ -162,7 +162,7 @@ var model = {
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.924927, 174.897249),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "sri-mahkota-auckland-2"
     },
     {
       "title": "Kyou Sushi",
@@ -175,7 +175,20 @@ var model = {
       "imageAlt": "Tanpopo Highland Park front door",
       "position": new google.maps.LatLng(-36.902144, 174.904867),
       "keyword": "food",
-      "yelpQuery": "tanpopo-howick-auckland"
+      "yelpQuery": "kyou-sushi-auckland"
+    },
+    {
+      "title": "Sa Rang Bang Korean Restaurant",
+      "cuisine": "Korean",
+      "description": "Small rustic restaurant lots of unique flavours of Korea. Has korean steamboats to share",
+      "price": "$16",
+      "address": "1/17 Aviemore Drive",
+      "suburb": "Highland Park",
+      "image": "images/tanpopo.jpg",
+      "imageAlt": "Tanpopo Highland Park front door",
+      "position": new google.maps.LatLng(-36.900900, 174.905152),
+      "keyword": "food",
+      "yelpQuery": "sa-rang-bang-korean-restaurant-auckland"
     }
   ]
 }
