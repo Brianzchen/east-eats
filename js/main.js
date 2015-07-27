@@ -155,14 +155,19 @@ ko.bindingHandlers.map = {
                 }
             });
           } else {
-            mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
-              mapObj.marker[mark].image,
-              mapObj.marker[mark].imageAlt,
-              mapObj.marker[mark].price,
-              mapObj.marker[mark].description,
-              mapObj.marker[mark].address,
-              mapObj.marker[mark].suburb));
-            mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+            // Create a timer to be more consistent with locations that require calling
+            // the yelp database before they display.
+            setTimeout(function(){
+              mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+                mapObj.marker[mark].image,
+                mapObj.marker[mark].imageAlt,
+                mapObj.marker[mark].price,
+                mapObj.marker[mark].description,
+                mapObj.marker[mark].address,
+                mapObj.marker[mark].suburb));
+              mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+            }, 400);
+
           }
         };
       })(i));
