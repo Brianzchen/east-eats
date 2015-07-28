@@ -9,6 +9,7 @@ var viewModel = function() {
 
   // Shows only the markers that are related to the search result
   self.searchResult = function() {
+    console.log("hi");
     for (i = 0; i < model.markers.length; i++) {
       // Loops through all the terms in markers to check if a word is mentioned
       if (model.markers[i].title.toLowerCase().includes(self.search().toLowerCase()) ||
@@ -169,10 +170,10 @@ ko.bindingHandlers.map = {
                       data.review_count,
                       data.url));
                     mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
-                }
 
-                // Stops the timer if there was a yelp response
-                clearTimeout(yelpRequestTimeout);
+                    // Stops the timer if there was a yelp response
+                    clearTimeout(yelpRequestTimeout);
+                }
             });
           } else {
             // Create a timer to be more consistent with locations that require calling
