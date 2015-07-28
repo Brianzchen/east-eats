@@ -251,7 +251,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
   }
   // Checks to see if there is yelp data and append the correct rating to
   // info window
-  var ratingImage = '<div class="col-6"><img class="infoRating" src="';
+  var ratingImage = '<div class="col-7"><img class="infoRating" src="';
   if (rating !== undefined) {
     if (rating == 5) {
       ratingImage += 'images/star5.png">';
@@ -272,7 +272,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
     } else if (rating == 1) {
       ratingImage += 'images/star1.png">';
     }
-    ratingImage += '</div><p class="col-6 infoReview">Based on ' +
+    ratingImage += '</div><p class="col-5 infoReview">Based on ' +
       reviewCount +
       ' review</p>';
   } else {
