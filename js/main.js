@@ -185,9 +185,16 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
   } else {
     var infoImage = '';
   }
+
+  // if in mobile view make give the star rating image more space
+  if (window.innerWidth < 500) {
+    var ratingImage = '<div class="col-8"><img class="infoRating" src="';
+  } else {
+    var ratingImage = '<div class="col-6"><img class="infoRating" src="';
+  }
+
   // Checks to see if there is yelp data and append the correct rating to
   // info window
-  var ratingImage = '<div class="col-7"><img class="infoRating" src="';
   if (rating !== undefined) {
     if (rating == 5) {
       ratingImage += 'images/star5.png">';
@@ -208,9 +215,22 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
     } else if (rating == 1) {
       ratingImage += 'images/star1.png">';
     }
-    ratingImage += '</div><p class="col-5 infoReview">Based on ' +
-      reviewCount +
-      ' review</p>';
+
+    // if in mobile view make give the star rating image more space
+    if (window.innerWidth < 500) {
+      ratingImage += '</div><p class="col-4 infoReview">Based on ' +
+        reviewCount;
+    } else {
+      ratingImage += '</div><p class="col-6 infoReview">Based on ' +
+        reviewCount;
+    }
+
+    // Checks how many reivews were written to append review as plural or singular
+    if (reviewCount > 1) {
+      ratingImage += ' reviews</p>';
+    } else {
+      ratingImage += ' review</p>';
+    }
   } else {
     // If there is no yelp data apply a zero star rating and encourage user to
     // rate themselves
