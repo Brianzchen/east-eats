@@ -99,6 +99,11 @@ ko.bindingHandlers.map = {
         position: model.markers[i].position,
         title: model.markers[i].title,
         findLocation: function() {
+          // Close the marker panel when user presses on a location in mobile
+          // screen size
+          if (window.innerWidth < 500) {
+            self.listFunction();
+          }
           mapObj.googleMap.setCenter(this.position);
           mapObj.googleMap.setZoom(model.initialMap.markerListZoom);
         }
