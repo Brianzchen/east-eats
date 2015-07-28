@@ -144,7 +144,8 @@ ko.bindingHandlers.map = {
 
           // Sets a timer to see if there is a response from the Yelp server
           var yelpRequestTimeout = setTimeout(function(){
-            mapObj.infoWindow.setContent("<h3>Sorry we weren't able to reach Yelp</h3>");
+            mapObj.infoWindow.setContent("<h3>Sorry we weren't able to reach Yelp</h3>" +
+              "<p>Please check that you're connected to the internet or that your firewall isn't blocking requests</p>");
             mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
           }, 8000);
 
