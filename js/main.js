@@ -9,7 +9,6 @@ var viewModel = function() {
 
   // Shows only the markers that are related to the search result
   self.searchResult = function() {
-    console.log("hi");
     for (i = 0; i < model.markers.length; i++) {
       // Loops through all the terms in markers to check if a word is mentioned
       if (model.markers[i].title.toLowerCase().includes(self.search().toLowerCase()) ||
