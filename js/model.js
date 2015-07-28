@@ -1,5 +1,4 @@
-// Coordinates of map markers and initial values
-
+// Coordinates of map markers, initial values and Yelp keys for GET requests
 var model = {
   "initialMap":
   {

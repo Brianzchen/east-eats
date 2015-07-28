@@ -6,11 +6,11 @@ var viewModel = function() {
     open: false
   });
   self.hideText = ko.observable("Hide Markers");
-  self.tempMarker = [];
 
   // Shows only the markers that are related to the search result
   self.searchResult = function() {
     for (i = 0; i < model.markers.length; i++) {
+      // Loops through all the terms in markers to check if a word is mentioned
       if (model.markers[i].title.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].description.toLowerCase().includes(self.search().toLowerCase()) ||
       model.markers[i].address.toLowerCase().includes(self.search().toLowerCase()) ||
@@ -25,7 +25,7 @@ var viewModel = function() {
     }
   }
 
-  // Events that trigger when user presses the markers button
+  // Hides or shows all markers when using presses the hide/show marker button
   self.hide = function(data) {
     if (self.hideText() == "Hide Markers") {
       self.hideText("Show Makers");
@@ -57,7 +57,7 @@ var viewModel = function() {
   }
 };
 
-// Creates the google map and initializes all the markers
+// Creates the google map and initializes all the markers and info window
 ko.bindingHandlers.map = {
   init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
     var mapObj = ko.utils.unwrapObservable(valueAccessor());
@@ -93,7 +93,7 @@ ko.bindingHandlers.map = {
       mapObj.marker.push(temp);
 
       // Creates a observable array to hold the list of
-      // markers to know when to show and when no to show.
+      // markers to know when to show and when not to show.
       mapObj.visibleMarkersList.push( {
         visible: ko.observable(true),
         position: model.markers[i].position,
@@ -117,6 +117,7 @@ ko.bindingHandlers.map = {
               tokenSecret : model.yelpKeys.accessTokenSecret
           };
 
+          // Setting the parameters to send to Yelp when user clicks on a marker
           parameters = [];
           parameters.push(['callback', 'cb']);
           parameters.push(['oauth_consumer_key', model.yelpKeys.consumerKey]);
@@ -130,11 +131,15 @@ ko.bindingHandlers.map = {
               'parameters' : parameters
           };
 
+          // Sets a timestamp for the request to Yelp
           OAuth.setTimestampAndNonce(message);
           OAuth.SignatureMethod.sign(message, accessor);
 
           var parameterMap = OAuth.getParameterMap(message.parameters);
 
+          // Checks if the location has a yelp business link, if so then it will run
+          // the ajax request, otherwise it will generate a cut down version of
+          // the info window with less details
           if (model.markers[mark].yelpQuery !== "no-yelp") {
             $.ajax({
                 'url' : message.action,
@@ -142,8 +147,6 @@ ko.bindingHandlers.map = {
                 'dataType' : 'jsonp',
                 'jsonpCallback' : 'cb',
                 'success' : function(data, textStats, XMLHttpRequest) {
-                    console.log(data);
-
                     mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
                       data.image_url,
                       "Image taken from yelp.com",
@@ -178,11 +181,12 @@ ko.bindingHandlers.map = {
   }
 };
 
-// registers when the enter key is pressed to request a response
+// registers when the enter key is pressed to request a response for search bar
 ko.bindingHandlers.returnAction = {
   init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
     var value = ko.utils.unwrapObservable(valueAccessor());
 
+    // If the key entered is enter then do something
     $(element).keydown(function(e) {
       if (e.which === 13) {
         value(viewModel);
@@ -228,6 +232,8 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
   } else {
     var infoImage = '';
   }
+  // Checks to see if there is yelp data and append the correct rating to
+  // info window
   var ratingImage = '<div class="col-6"><img class="infoRating" src="';
   if (rating !== undefined) {
     if (rating == 5) {
@@ -253,10 +259,13 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
       reviewCount +
       ' review</p>';
   } else {
+    // If there is no yelp data apply a zero star rating and encourage user to
+    // rate themselves
     ratingImage += 'images/star0.png"></div>' +
       '<p class="infoNoYelp col-12">' +
       "This restaurant hasn't been rated yet, why not try it and let us know!</p>";
   }
+  // If there is yelp data append the link to the yelp page of the restaurant
   if (url !== undefined) {
     var urlLine = '<a target="_blank" class="col-10" href="' +
       url +
