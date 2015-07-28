@@ -142,6 +142,12 @@ ko.bindingHandlers.map = {
 
           var parameterMap = OAuth.getParameterMap(message.parameters);
 
+          // Sets a timer to see if there is a response from the Yelp server
+          var yelpRequestTimeout = setTimeout(function(){
+            mapObj.infoWindow.setContent("<h3>Sorry we weren't able to reach Yelp</h3>");
+            mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+          }, 8000);
+
           // Checks if the location has a yelp business link, if so then it will run
           // the ajax request, otherwise it will generate a cut down version of
           // the info window with less details
@@ -164,6 +170,9 @@ ko.bindingHandlers.map = {
                       data.url));
                     mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
                 }
+
+                // Stops the timer if there was a yelp response
+                clearTimeout(yelpRequestTimeout);
             });
           } else {
             // Create a timer to be more consistent with locations that require calling
@@ -177,8 +186,10 @@ ko.bindingHandlers.map = {
                 mapObj.marker[mark].address,
                 mapObj.marker[mark].suburb));
               mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
-            }, 400);
 
+              // Clears the timer because we are not calling the yelp server
+              clearTimeout(yelpRequestTimeout);
+            }, 400);
           }
         };
       })(i));
