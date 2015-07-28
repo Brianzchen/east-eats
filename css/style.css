@@ -117,11 +117,10 @@ li:hover {
 }
 
 #header {
-  height: 15%;
+  height: 120px;
 }
 
 #mainDiv {
-  height: 85%;
   width:100%;
   display: flex;
 }
@@ -188,37 +187,11 @@ li:hover {
   }
 
   #header {
-    height: 20%;
-  }
-
-  #mainDiv {
-    height: 80%;
+    height: 140px;
   }
 
   #markerPanel {
     left: 20%;
     width: 80%;
-  }
-}
-
-/* Incase the window gets too short, readjust so the function buttons
-  are still visible */
-@media screen and (max-height: 600px) {
-  #header {
-    height: 25%;
-  }
-
-  #mainDiv {
-    height: 75%;
-  }
-}
-
-@media screen and (min-height: 1000px) {
-  #header {
-    height: 10%;
-  }
-
-  #mainDiv {
-    height: 90%;
   }
 }
