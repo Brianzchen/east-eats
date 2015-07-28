@@ -156,4 +156,4 @@ var model = {
       "yelpQuery": "sa-rang-bang-korean-restaurant-auckland"
     }
   ]
-}
+};

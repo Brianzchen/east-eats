@@ -23,14 +23,14 @@ var viewModel = function() {
         self.myMap().visibleMarkersList()[i].visible(false);
       }
     }
-  }
+  };
 
   // Hides or shows all markers when using presses the hide/show marker button
   self.hide = function(data) {
     if (self.hideText() == "Hide Markers") {
       self.hideText("Show Makers");
       setAllMap(null);
-      for (i = 0; i < model.markers.length; i++) {
+      for (i = 0, len = model.markers.length; i < len; i++) {
         self.myMap().visibleMarkersList()[i].visible(false);
       }
     } else {
@@ -54,7 +54,7 @@ var viewModel = function() {
       }
       document.getElementById("markerPanel").style.display = "inline";
     }
-  }
+  };
 };
 
 // Creates the google map and initializes all the markers and info window
