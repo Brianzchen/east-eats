@@ -104,8 +104,18 @@ ko.bindingHandlers.map = {
           if (window.innerWidth < 500) {
             self.listFunction();
           }
+          // Sets the position of the marker and zooms in for a clear view of
+          // surrounding streets
           mapObj.googleMap.setCenter(this.position);
           mapObj.googleMap.setZoom(model.initialMap.markerListZoom);
+
+          // Checks each marker to see which one the user pressed in the list
+          // then runs a function to open the mark marker the user wanted
+          for (i = 0, len = mapObj.marker.length; i < len; i++) {
+            if (this.position == mapObj.marker[i].position) {
+              openMarker(mapObj ,i);
+            }
+          }
         }
       });
     }
@@ -117,81 +127,7 @@ ko.bindingHandlers.map = {
       mapObj.marker[i].setMap(mapObj.googleMap);
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
-          var accessor = {
-              consumerSecret : model.yelpKeys.consumerSecret,
-              tokenSecret : model.yelpKeys.accessTokenSecret
-          };
-
-          // Setting the parameters to send to Yelp when user clicks on a marker
-          parameters = [];
-          parameters.push(['callback', 'cb']);
-          parameters.push(['oauth_consumer_key', model.yelpKeys.consumerKey]);
-          parameters.push(['oauth_consumer_secret', model.yelpKeys.consumerSecret]);
-          parameters.push(['oauth_token', model.yelpKeys.accessToken]);
-          parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
-
-          var message = {
-              'action' : 'http://api.yelp.com/v2/business/' + model.markers[mark].yelpQuery,
-              'method' : 'GET',
-              'parameters' : parameters
-          };
-
-          // Sets a timestamp for the request to Yelp
-          OAuth.setTimestampAndNonce(message);
-          OAuth.SignatureMethod.sign(message, accessor);
-
-          var parameterMap = OAuth.getParameterMap(message.parameters);
-
-          // Sets a timer to see if there is a response from the Yelp server
-          var yelpRequestTimeout = setTimeout(function(){
-            mapObj.infoWindow.setContent("<h3>Sorry we weren't able to reach Yelp</h3>" +
-              "<p>Please check that you're connected to the internet or that your firewall isn't blocking requests</p>");
-            mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
-          }, 8000);
-
-          // Checks if the location has a yelp business link, if so then it will run
-          // the ajax request, otherwise it will generate a cut down version of
-          // the info window with less details
-          if (model.markers[mark].yelpQuery !== "no-yelp") {
-            $.ajax({
-                'url' : message.action,
-                'data' : parameterMap,
-                'dataType' : 'jsonp',
-                'jsonpCallback' : 'cb',
-                'success' : function(data, textStats, XMLHttpRequest) {
-                    mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
-                      data.image_url,
-                      "Image taken from yelp.com",
-                      mapObj.marker[mark].price,
-                      mapObj.marker[mark].description,
-                      mapObj.marker[mark].address,
-                      mapObj.marker[mark].suburb,
-                      data.rating,
-                      data.review_count,
-                      data.url));
-                    mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
-
-                    // Stops the timer if there was a yelp response
-                    clearTimeout(yelpRequestTimeout);
-                }
-            });
-          } else {
-            // Create a timer to be more consistent with locations that require calling
-            // the yelp database before they display.
-            setTimeout(function(){
-              mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
-                mapObj.marker[mark].image,
-                mapObj.marker[mark].imageAlt,
-                mapObj.marker[mark].price,
-                mapObj.marker[mark].description,
-                mapObj.marker[mark].address,
-                mapObj.marker[mark].suburb));
-              mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
-
-              // Clears the timer because we are not calling the yelp server
-              clearTimeout(yelpRequestTimeout);
-            }, 400);
-          }
+          openMarker(mapObj, mark);
         };
       })(i));
     }
@@ -296,4 +232,82 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
     '</div>';
 
   return heading + body + infoImage + ratingImage + urlLine + end;
-}
+};
+
+function openMarker(mapObj, mark) {
+  var accessor = {
+      consumerSecret : model.yelpKeys.consumerSecret,
+      tokenSecret : model.yelpKeys.accessTokenSecret
+  };
+
+  // Setting the parameters to send to Yelp when user clicks on a marker
+  parameters = [];
+  parameters.push(['callback', 'cb']);
+  parameters.push(['oauth_consumer_key', model.yelpKeys.consumerKey]);
+  parameters.push(['oauth_consumer_secret', model.yelpKeys.consumerSecret]);
+  parameters.push(['oauth_token', model.yelpKeys.accessToken]);
+  parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+
+  var message = {
+      'action' : 'http://api.yelp.com/v2/business/' + model.markers[mark].yelpQuery,
+      'method' : 'GET',
+      'parameters' : parameters
+  };
+
+  // Sets a timestamp for the request to Yelp
+  OAuth.setTimestampAndNonce(message);
+  OAuth.SignatureMethod.sign(message, accessor);
+
+  var parameterMap = OAuth.getParameterMap(message.parameters);
+
+  // Sets a timer to see if there is a response from the Yelp server
+  var yelpRequestTimeout = setTimeout(function(){
+    mapObj.infoWindow.setContent("<h3>Sorry we weren't able to reach Yelp</h3>" +
+      "<p>Please check that you're connected to the internet or that your firewall isn't blocking requests</p>");
+    mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+  }, 8000);
+
+  // Checks if the location has a yelp business link, if so then it will run
+  // the ajax request, otherwise it will generate a cut down version of
+  // the info window with less details
+  if (model.markers[mark].yelpQuery !== "no-yelp") {
+    $.ajax({
+        'url' : message.action,
+        'data' : parameterMap,
+        'dataType' : 'jsonp',
+        'jsonpCallback' : 'cb',
+        'success' : function(data, textStats, XMLHttpRequest) {
+            mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+              data.image_url,
+              "Image taken from yelp.com",
+              mapObj.marker[mark].price,
+              mapObj.marker[mark].description,
+              mapObj.marker[mark].address,
+              mapObj.marker[mark].suburb,
+              data.rating,
+              data.review_count,
+              data.url));
+            mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+
+            // Stops the timer if there was a yelp response
+            clearTimeout(yelpRequestTimeout);
+        }
+    });
+  } else {
+    // Create a timer to be more consistent with locations that require calling
+    // the yelp database before they display.
+    setTimeout(function(){
+      mapObj.infoWindow.setContent(buildInfoWindow(mapObj.marker[mark].title,
+        mapObj.marker[mark].image,
+        mapObj.marker[mark].imageAlt,
+        mapObj.marker[mark].price,
+        mapObj.marker[mark].description,
+        mapObj.marker[mark].address,
+        mapObj.marker[mark].suburb));
+      mapObj.infoWindow.open(mapObj.googleMap, mapObj.marker[mark]);
+
+      // Clears the timer because we are not calling the yelp server
+      clearTimeout(yelpRequestTimeout);
+    }, 400);
+  }
+};
