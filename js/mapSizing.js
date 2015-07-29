@@ -10,10 +10,8 @@ $(window).resize(function() {
 
 function mainDivAdjust() {
   if (window.innerWidth < 500) {
-    var tempHeight = window.innerHeight - 140 + "px";
-    $("#mainDiv").css({"height": tempHeight})
+    $("#mainDiv").css({"height": window.innerHeight - 140 + "px"});
   } else {
-    var tempHeight = window.innerHeight - 120 + "px";
-    $("#mainDiv").css({"height": tempHeight})
+    $("#mainDiv").css({"height": window.innerHeight - 120 + "px"});
   }
 }
