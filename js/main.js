@@ -26,7 +26,7 @@ var viewModel = function() {
   };
 
   // Hides or shows all markers when using presses the hide/show marker button
-  self.hide = function(data) {
+  self.hide = function() {
     if (self.hideText() == "Hide Markers") {
       self.hideText("Show Makers");
       setAllMap(null);
@@ -123,7 +123,6 @@ ko.bindingHandlers.map = {
     // Enclosed fucntion that returns the info windows when user clicks
     // on one of the markers
     for (i = 0; i < mapObj.marker.length; i++) {
-      var temp = mapObj.marker[i];
       mapObj.marker[i].setMap(mapObj.googleMap);
       google.maps.event.addListener(mapObj.marker[i], 'click', (function(mark) {
         return function() {
@@ -176,21 +175,23 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
     suburb +
     '</p>' +
     '</div>';
+  var infoImage;
   if (image !== undefined) {
-    var infoImage = '<img class="infoImage floatRight col-4" src="' +
+    infoImage = '<img class="infoImage floatRight col-4" src="' +
       image +
       '" alt="' +
       imageAlt +
       '">';
   } else {
-    var infoImage = '';
+    infoImage = '';
   }
 
   // if in mobile view make give the star rating image more space
+  var ratingImage;
   if (window.innerWidth < 500) {
-    var ratingImage = '<div class="col-8"><img class="infoRating" src="';
+    ratingImage = '<div class="col-8"><img class="infoRating" src="';
   } else {
-    var ratingImage = '<div class="col-6"><img class="infoRating" src="';
+    ratingImage = '<div class="col-6"><img class="infoRating" src="';
   }
 
   // Checks to see if there is yelp data and append the correct rating to
@@ -239,20 +240,21 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
       "This restaurant hasn't been rated yet, why not try it and let us know!</p>";
   }
   // If there is yelp data append the link to the yelp page of the restaurant
+  var urlLine;
   if (url !== undefined) {
-    var urlLine = '<a target="_blank" class="col-10" href="' +
+    urlLine = '<a target="_blank" class="col-10" href="' +
       url +
       '">' +
       url +
       '</a>';
   } else {
-    var urlLine = "";
+    urlLine = "";
   }
   var end = '<a class="col-2" target="_blank" href="http://nz.yelp.com/"><img class="floatRight col-12" src="images/yelp_logo.png" alt="yelp logo"></a>' +
     '</div>';
 
   return heading + body + infoImage + ratingImage + urlLine + end;
-};
+}
 
 function openMarker(mapObj, mark) {
   var accessor = {
@@ -330,4 +332,4 @@ function openMarker(mapObj, mark) {
       clearTimeout(yelpRequestTimeout);
     }, 400);
   }
-};
+}
