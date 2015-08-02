@@ -67,7 +67,7 @@ var model = {
     },
     {
       "title": "Viet Hoa Vietnamese Restaurant",
-      "description": "Amazing Vietnamese cuisine, featuring a real taste from Vietnam.",
+      "description": "Good casual Vietnamese dining. Prices are fair and food is fast",
       "price": "$12",
       "address": "168F Aviemore Dr",
       "suburb": "Highland Park",
@@ -77,7 +77,7 @@ var model = {
     },
     {
       "title": "Genghis Khan",
-      "description": "Amazing Mongolian cuisine, featuring a real taste from Mongolia.",
+      "description": "All you can eat Mongolian BBQ stirfry. Just pick the meats you want, the veggies you like and the chef with fry it up right in front of you. Great fun with friends and family.",
       "price": "$50",
       "address": "317 Ti Rakau Drive",
       "suburb": "East Tamaki",
