@@ -154,6 +154,16 @@ var model = {
       "position": new google.maps.LatLng(-36.900900, 174.905152),
       "keyword": "food, Korean",
       "yelpQuery": "sa-rang-bang-korean-restaurant-auckland"
+    },
+    {
+      "title": "Confucious",
+      "description": "An authentic chinese restaurant with authentic flavours. For a not too expensive price you can enjoy the tastes of unique chiense food.",
+      "price": "$10",
+      "address": "9 Gooche Place",
+      "suburb": "Somerville",
+      "position": new google.maps.LatLng(-36.912273, 174.928313),
+      "keyword": "chiense, spicy, authentic",
+      "yelpQuery": "no-yelp"
     }
   ]
 };
