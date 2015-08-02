@@ -97,7 +97,7 @@ var model = {
     },
     {
       "title": "Marina Thai",
-      "description": "Amazing Thai cuisine, featuring a real taste from Thai.",
+      "description": "Traditional Thai cuisine with lots of flavours to choose from and non that you'll be disapointed with.",
       "price": "$25",
       "address": "The Promenade Building Shop C5/1 Ara-Tai",
       "suburb": "Half Moon Bay",
@@ -107,7 +107,7 @@ var model = {
     },
     {
       "title": "Bruce Lee Sushi / Highland Park",
-      "description": "Amazing Japanese cuisine, featuring a real taste from Japan.",
+      "description": "Modern sushi that are sure to send your tastebuds flying.",
       "price": "$14",
       "address": "Unit 4, 490 Pakuranga Road",
       "suburb": "Highland Park",
@@ -117,7 +117,7 @@ var model = {
     },
     {
       "title": "Chongqing Cuisine",
-      "description": "Spicy Chinese food from Chongqing province.",
+      "description": "Spicy Chinese food from Chongqing province. Expect to sweat",
       "price": "$12",
       "address": "Shop 7 Unit 6/119 Meadowland Drive",
       "suburb": "Somerville",
@@ -127,8 +127,8 @@ var model = {
     },
     {
       "title": "Sri Mahkota",
-      "description": "Authentic Malaysian cuisine.",
-      "price": "$25",
+      "description": "A small little Malaysian restaurant with big flavours.",
+      "price": "$13",
       "address": "22D Torrens Road",
       "suburb": "Burswood",
       "position": new google.maps.LatLng(-36.924927, 174.897249),
@@ -137,7 +137,7 @@ var model = {
     },
     {
       "title": "Kyou Sushi",
-      "description": "Amazing Japanese cuisine, featuring a real taste from Japan.",
+      "description": "A small Japanese style shop. Has a wide slection of fresh sushi don, or lunch boxes.",
       "price": "$10",
       "address": "12/29 Aviemore Drive",
       "suburb": "Highland Park",
