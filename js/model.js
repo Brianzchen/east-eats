@@ -164,6 +164,16 @@ var model = {
       "position": new google.maps.LatLng(-36.912273, 174.928313),
       "keyword": "chiense, spicy, authentic",
       "yelpQuery": "no-yelp"
+    },
+    {
+      "title": "Shogun Japanese Restaurant",
+      "description": "A relaxing comfortable Japanese restaurant. All food is extremely fresh and cooked to perfection. Specializing in mainly meals for one, such as lunch boxes, udon or dons, it shouldn't be hard to find something you like and be very impressed.",
+      "price": "$25",
+      "address": "16 Gooche Place",
+      "suburb": "Somerville",
+      "position": new google.maps.LatLng(-36.912207, 174.927201),
+      "keyword": "japanese, lunch box",
+      "yelpQuery": "no-yelp"
     }
   ]
 };
