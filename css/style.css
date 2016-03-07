@@ -170,6 +170,10 @@ li:hover {
   margin-bottom: 0;
 }
 
+.infoUrl {
+  word-wrap: break-word;
+}
+
 /* Adjustment for mobile size screens */
 @media screen and (max-width: 500px) {
   .title {

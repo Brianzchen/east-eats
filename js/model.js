@@ -99,7 +99,7 @@ var model = {
       "title": "Marina Thai",
       "description": "Traditional Thai cuisine with lots of flavours to choose from and non that you'll be disapointed with.",
       "price": "$25",
-      "address": "The Promenade Building Shop C5/1 Ara-Tai",
+      "address": "The Promenade Building Shop C5/1 Ara-Tai Road",
       "suburb": "Half Moon Bay",
       "position": new google.maps.LatLng(-36.880977, 174.899923),
       "keyword": "food, Thai",
@@ -174,6 +174,26 @@ var model = {
       "position": new google.maps.LatLng(-36.912207, 174.927201),
       "keyword": "japanese, lunch box",
       "yelpQuery": "no-yelp"
+    },
+    {
+      "title": "Gouemon Japanese Restaurant",
+      "description": "Small Japanese restaurant overlooking the sea side.",
+      "price": "$30",
+      "address": "Shop T3 The Compass Building Ground Level/1, Ara-Tai Road",
+      "suburb": "Half Moon Bay",
+      "position": new google.maps.LatLng(-36.880746, 174.899431),
+      "keyword": "japanese, a la carte",
+      "yelpQuery": "gouemon-japanese-restaurant-auckland"
+    },
+    {
+      "title": "Daikoku",
+      "description": "A great japanese restaurant that serves two styles of Japanese cuisine, Tapanyaki which is stir-fried dishes cooked in front of you or more traditional style with ramen and don served during lunch hours and a la carte style menu for dinner service.",
+      "price": "Various",
+      "address": "Botany Town Centre 1st floor ASB Bank",
+      "suburb": "East Tamaki",
+      "position": new google.maps.LatLng(-36.933132, 174.912389),
+      "keyword": "japanese, a la carte, ramen, tapanyaki",
+      "yelpQuery": "daikoku-auckland-3"
     }
   ]
 };

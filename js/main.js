@@ -242,7 +242,7 @@ function buildInfoWindow(title, image, imageAlt, price, para1, address, suburb, 
   // If there is yelp data append the link to the yelp page of the restaurant
   var urlLine;
   if (url !== undefined) {
-    urlLine = '<a target="_blank" class="col-10" href="' +
+    urlLine = '<a target="_blank" class="col-10 infoUrl" href="' +
       url +
       '">' +
       url +
