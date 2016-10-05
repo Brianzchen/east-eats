@@ -6,43 +6,7 @@
     <title>East Eats</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type="text/css">
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_2WuPApnSlwW7WnTj5hVmWEGBA2ld_iI&callback=initMap">
-    </script>
-    <!-- Loads the required libraries needed for application-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
-    <script src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
-    <script src="js/knockout-3.3.0.js"></script>
-    <script src="js/model.js"></script>
-    <script src="js/mapSizing.js"></script>
   </head>
   <body>
-    <header id="header" class="row">
-      <div class="col-10 title">
-        <h1 class="col-12">East Eats</h1>
-        <h2 class="col-12">Auckland NZ</h2>
-      </div>
-      <div class="col-2 functions">
-        <input class="floatRight  searchBar" placeholder="Search" type="text" data-bind="value: search, valueUpdate: 'afterkeyup', returnAction: searchResult">
-        <button class="floatRight hideButton" data-bind="click: hide, text: hideText"></button>
-        <button class="floatRight markerButton" data-bind="click: listFunction">Marker List</button>
-      </div>
-    </header>
-    <div id="mainDiv">
-      <div id="markerPanel" class="floatRight">
-        <h3 class="markerListHeader">Marker List</h3>
-        <p class="markerListSub">Click to be taken to a location</p>
-        <ul data-bind="foreach: self.myMap().visibleMarkersList">
-          <!-- ko if: visible -->
-            <li class="markerInList" data-bind="text: title, click: findLocation"></li>
-          <!-- /ko -->
-        </ul>
-      </div>
-      <div id="map-canvas" data-bind="map: myMap">
-      </div>
-    </div>
-    <script src="js/main.js"></script>
   </body>
 </html>
