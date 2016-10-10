@@ -1,4 +1,4 @@
-html, body, #container {
+html, body, #container, #main {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -6,4 +6,9 @@ html, body, #container {
 
 #map {
   height: 100%;
+}
+
+#title {
+  position: absolute;
+  z-index: 1;
 }
