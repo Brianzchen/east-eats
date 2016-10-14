@@ -6,9 +6,27 @@ html, body, #container, #main {
 
 #map {
   height: 100%;
+  position: relative;
+  z-index: -1;
 }
 
 #title {
+  display: none;
+}
+
+#toolBar {
   position: absolute;
-  z-index: 1;
+  top: 10px;
+  right: 0;
+}
+
+@media screen and (min-width: 768px) {
+  #map {
+    height: 100%;
+    top: -69px;
+  }
+
+  #title {
+    display: inline;
+  }
 }
