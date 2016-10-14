@@ -7,21 +7,27 @@ html, body, #container, #main {
 #map {
   height: 100%;
   position: relative;
-  z-index: -1;
+  top: -69px;
 }
 
 #title {
-  display: none;
+  visibility: hidden;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
 }
 
 #toolBar {
   position: absolute;
   top: 10px;
   right: 2px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 #searchBox {
   margin-bottom: 0;
+  pointer-events: all;
 }
 
 #menuIcon {
@@ -32,6 +38,7 @@ html, body, #container, #main {
   width: 34px;
   height: 34px;
   float: right;
+  pointer-events: all;
 }
 
 #menuIcon:hover {
@@ -47,11 +54,10 @@ html, body, #container, #main {
 @media screen and (min-width: 768px) {
   #map {
     height: 100%;
-    top: -69px;
   }
 
   #title {
-    display: inline;
+    visibility: visible;
   }
 
   #toolBar {
