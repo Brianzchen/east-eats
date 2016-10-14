@@ -21,11 +21,3 @@ ReactDOM.render(
   <Main />,
   document.getElementById("container")
 );
-
-var map;
-window.initMap = function() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -36.914086, lng: 174.905668},
-    zoom: 14
-  });
-}
