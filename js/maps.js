@@ -18,13 +18,12 @@ database.on("child_added", function(data) {
 });
 
 var map;
-window.initMap = function() {
+function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -36.914086, lng: 174.905668},
     zoom: 14
   });
 }
-
 
 function addMarkers(restaurants) {
   for (var i = 0, len = restaurants.length; i < len; i++) {
@@ -35,6 +34,8 @@ function addMarkers(restaurants) {
     });
   }
 }
+
+initMap();
 
 // writeNewRestaurant("Gouemon", -36.880788, 174.899305, "Japanese", 30, "View");
 
