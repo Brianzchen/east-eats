@@ -11,8 +11,10 @@ var database = firebase.database().ref("restaurants");
 
 var restaurants = [];
 
-database.once('value').then(function(snapshot) {
-  console.log(snapshot.name);
+database.on("child_added", function(data) {
+  restaurants.push(data.val());
+  addMarkers(restaurants);
+  database.off();
 });
 
 var map;
@@ -21,9 +23,12 @@ window.initMap = function() {
     center: {lat: -36.914086, lng: 174.905668},
     zoom: 14
   });
+}
 
+
+function addMarkers(restaurants) {
   for (var i = 0, len = restaurants.length; i < len; i++) {
-    var position = {lat: restaurants[i].latitude, long: restaurants[i].longitude}
+    var position = {"lat": restaurants[i].latitude, "lng": restaurants[i].longitude}
     var marker = new google.maps.Marker({
       position: position,
       map: map
