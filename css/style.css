@@ -17,7 +17,31 @@ html, body, #container, #main {
 #toolBar {
   position: absolute;
   top: 10px;
-  right: 0;
+  right: 2px;
+}
+
+#searchBox {
+  margin-bottom: 0;
+}
+
+#menuIcon {
+  background-image: url("../images/menu.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 34px;
+  height: 34px;
+  float: right;
+}
+
+#menuIcon:hover {
+  cursor: pointer;
+}
+
+#menuIcon:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
 }
 
 @media screen and (min-width: 768px) {
@@ -28,5 +52,14 @@ html, body, #container, #main {
 
   #title {
     display: inline;
+  }
+
+  #toolBar {
+    right: 10px;
+  }
+
+  #searchBox {
+    float: left;
+    margin-right: 10px;
   }
 }
