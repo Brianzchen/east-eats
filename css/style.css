@@ -37,6 +37,7 @@ html, body, #container, #main {
   background-size: contain;
   width: 34px;
   height: 34px;
+  margin-top: 10px;
   float: right;
   pointer-events: all;
 }
@@ -67,5 +68,9 @@ html, body, #container, #main {
   #searchBox {
     float: left;
     margin-right: 10px;
+  }
+
+  #menuIcon {
+    margin-top: 0;
   }
 }
