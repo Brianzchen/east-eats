@@ -17,6 +17,14 @@ class Main extends React.Component {
   }
 }
 
+class InfoWindow extends React.Component {
+  render() {
+    return (
+      <h1>Hello</h1>
+    );
+  }
+}
+
 ReactDOM.render(
   <Main />,
   document.getElementById("container")

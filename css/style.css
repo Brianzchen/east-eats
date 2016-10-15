@@ -19,7 +19,7 @@ html, body, #container, #main {
 
 #toolBar {
   position: absolute;
-  top: 10px;
+  top: 11px;
   right: 2px;
   z-index: 1;
   pointer-events: none;
