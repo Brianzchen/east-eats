@@ -29,6 +29,16 @@ class MenuIcon extends React.Component {
   }
 }
 
+class SideBar extends React.Component {
+  render() {
+    return (
+      <div id="sideBar">
+        Hello
+      </div>
+    );
+  }
+}
+
 ReactDOM.render(
   <Main />,
   document.getElementById("container")
@@ -36,4 +46,8 @@ ReactDOM.render(
 
 function openSideBar() {
   console.log("Side bar is supposed to open");
+  ReactDOM.render(
+    <SideBar />,
+    document.getElementById("sideBarContainer")
+  )
 }
