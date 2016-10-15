@@ -9,7 +9,7 @@ class Main extends React.Component {
           <div id="searchBox" className="form-group">
             <input type="text" className="form-control" id="searchInput" placeholder="Search" />
           </div>
-          <div id="menuIcon"></div>
+          <MenuIcon />
         </div>
         <div id="map"></div>
       </div>
@@ -17,11 +17,15 @@ class Main extends React.Component {
   }
 }
 
-class InfoWindow extends React.Component {
+class MenuIcon extends React.Component {
   render() {
     return (
-      <h1>Hello</h1>
+      <div id="menuIcon" onClick={this.handleClick}></div>
     );
+  }
+
+  handleClick() {
+    openSideBar();
   }
 }
 
@@ -29,3 +33,7 @@ ReactDOM.render(
   <Main />,
   document.getElementById("container")
 );
+
+function openSideBar() {
+  console.log("Side bar is supposed to open");
+}
