@@ -8,14 +8,32 @@ html, body, #container, #main {
 #map {
   height: 100%;
   position: relative;
-  top: -69px;
+  top: -109px;
 }
 
 #title {
   visibility: hidden;
   position: relative;
   z-index: 2;
+  background-color: white;
+  opacity: 0.6;
+  border-radius: 25px;
+  width: 200px;
+  height: 39px;
+  margin: 10px auto auto auto;
   pointer-events: none;
+}
+
+#titleText {
+  visibility: hidden;
+  position: relative;
+  top: -49px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.text-center {
+  margin-top: 10px !important;
 }
 
 #toolBar {
@@ -57,30 +75,48 @@ html, body, #container, #main {
 
 @keyframes openSideBar {
   0% {
-    right: -200px;
+    right: -300px;
   }
   100% {
     right: 0;
   }
 }
 
-#sideBar {
+@keyframes closeSideBar {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -300px;
+  }
+}
+
+.sideBar {
   position: absolute;
   top: 0;
-  right: 0;
   z-index: 2;
   height: 100%;
-  width: 200px;
+  width: 300px;
   background-color: white;
+}
+
+#openSideBar {
+  right: 0;
   animation: openSideBar 0.5s;
 }
 
+#closeSideBar {
+  right: -300px;
+  animation: closeSideBar 0.5s;
+}
+
 @media screen and (min-width: 768px) {
-  #map {
-    height: 100%;
-  }
 
   #title {
+    visibility: visible;
+  }
+
+  #titleText {
     visibility: visible;
   }
 
