@@ -44,7 +44,7 @@ class MenuIcon extends React.Component {
 class SideBar extends React.Component {
   render() {
     return (
-      <div id="openSideBar" className="sideBar">
+      <div id="loadedSideBar" className="sideBar">
         <MenuIcon usedTo="close" />
       </div>
     );
@@ -57,7 +57,11 @@ ReactDOM.render(
 );
 
 function openSideBar() {
-  document.getElementById("closeSideBar").id = "openSideBar";
+  if (document.getElementById("loadedSideBar") !== null) {
+    document.getElementById("loadedSideBar").id = "openSideBar";
+  } else {
+    document.getElementById("closeSideBar").id = "openSideBar";    
+  }
 }
 
 function closeSideBar() {

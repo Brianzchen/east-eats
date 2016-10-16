@@ -100,6 +100,10 @@ html, body, #container, #main {
   background-color: white;
 }
 
+#loadedSideBar {
+  right: -300px;
+}
+
 #openSideBar {
   right: 0;
   animation: openSideBar 0.5s;
