@@ -14,7 +14,6 @@ var restaurants = [];
 database.on("child_added", function(data) {
   restaurants.push(data.val());
   addMarkers(restaurants);
-  database.off();
 });
 
 initMap();
