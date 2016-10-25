@@ -1,5 +1,7 @@
 class Main extends React.Component {
   render() {
+    const sideBar = true;
+
     return (
       <div id="main" className="container-fluid">
         <div id="title" className="col-xl-1"></div>
@@ -10,7 +12,7 @@ class Main extends React.Component {
           <div id="searchBox" className="form-group">
             <input type="text" className="form-control" id="searchInput" placeholder="Search" />
           </div>
-          <MenuIcon usedTo="open" />
+          <MenuIcon usedTo={SideBar} />
         </div>
         <div id="map"></div>
         <SideBar />
@@ -23,6 +25,7 @@ class MenuIcon extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = { isClosed: this.props.usedTo };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -33,19 +36,33 @@ class MenuIcon extends React.Component {
   }
 
   handleClick() {
-    if (this.props.usedTo == "open") {
-      openSideBar();
-    } else if (this.props.usedTo == "close") {
-      closeSideBar();
+    if (this.state.isClosed) {
+      this.openSideBar();
+    } else if (!this.state.isClosed) {
+      this.closeSideBar();
     }
+  }
+
+  openSideBar() {
+    if (document.getElementById("loadedSideBar") !== null) {
+      document.getElementById("loadedSideBar").id = "openSideBar";
+    } else {
+      document.getElementById("closeSideBar").id = "openSideBar";
+    }
+  }
+
+  closeSideBar() {
+    document.getElementById("openSideBar").id = "closeSideBar";
   }
 }
 
 class SideBar extends React.Component {
   render() {
+    const sideBar = false;
+
     return (
       <div id="loadedSideBar" className="sideBar">
-        <MenuIcon usedTo="close" />
+        <MenuIcon usedTo={sideBar} />
       </div>
     );
   }
@@ -55,15 +72,3 @@ ReactDOM.render(
   <Main />,
   document.getElementById("container")
 );
-
-function openSideBar() {
-  if (document.getElementById("loadedSideBar") !== null) {
-    document.getElementById("loadedSideBar").id = "openSideBar";
-  } else {
-    document.getElementById("closeSideBar").id = "openSideBar";    
-  }
-}
-
-function closeSideBar() {
-  document.getElementById("openSideBar").id = "closeSideBar";
-}
