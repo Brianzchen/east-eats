@@ -6,9 +6,9 @@ class Hambuger extends React.Component {
     const styles = {
       icon: {
         position: `fixed`,
-        top: `12px`,
+        top: `16px`,
         right: `12px`,
-        fontSize: `3em`,
+        fontSize: `2.5em`,
         color: `#111111`,
         cursor: `pointer`,
       },
