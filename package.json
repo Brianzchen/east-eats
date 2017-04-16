@@ -9,7 +9,9 @@
     "watch": "webpack --watch"
   },
   "dependencies": {
+    "firebase": "^3.7.8",
     "lodash": "^4.17.4",
+    "prop-types": "^15.5.8",
     "radium": "^0.18.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"

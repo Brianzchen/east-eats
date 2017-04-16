@@ -16,7 +16,10 @@ class Hambuger extends React.Component {
 
     return (
       <div>
-        <i style={styles.icon} className="fa fa-bars" aria-hidden="true" />
+        <i
+          style={styles.icon} className="fa fa-bars" aria-hidden="true"
+          onClick={this.openSidePanel}
+        />
       </div>
     );
   }
