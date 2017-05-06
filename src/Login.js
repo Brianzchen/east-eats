@@ -25,7 +25,7 @@ class Login extends React.Component {
       },
       form: {
         position: `absolute`,
-        top: `calc(50% - 128px)`,
+        top: `calc(50% - ${this.state.formHeight / 2}px)`,
         left: `calc(50% - 160px)`,
         width: `320px`,
         padding: `64px 0`,
@@ -95,7 +95,7 @@ class Login extends React.Component {
     return (
       <div style={styles.container}>
         <div style={styles.containerOverlay}>
-          <form style={styles.form} onSubmit={this.logIn}>
+          <form style={styles.form} onSubmit={this.logIn} ref={o => { this.form = o; }}>
             <h1 style={styles.title}>East Eats</h1>
             <label style={emailLabelStyle} htmlFor={`emailInput`}>
               <i style={emailIconStyle} className={`fa fa-user-circle-o`} aria-hidden />
@@ -135,6 +135,7 @@ class Login extends React.Component {
       password: ``,
       emailFocus: false,
       passwordFocus: false,
+      formHeight: 0,
     };
   }
 
@@ -143,6 +144,10 @@ class Login extends React.Component {
     this.email.addEventListener(`blur`, this.inputEvent);
     this.password.addEventListener(`focus`, this.inputEvent);
     this.password.addEventListener(`blur`, this.inputEvent);
+
+    this.setState({ // eslint-disable-line
+      formHeight: this.form.offsetHeight,
+    });
   }
 
   componentWillUnmount() {
