@@ -36,16 +36,10 @@ export default class Main extends React.Component {
       firebase: this.props.firebase,
     });
   }
-
-  login = () => {
-    this.setState({
-      loggedIn: true,
-    });
-  }
 }
 
 Main.childContextTypes = {
-  firebase: PropTypes.object.isRequired,
+  firebase: PropTypes.object,
 };
 
 Main.propTypes = {

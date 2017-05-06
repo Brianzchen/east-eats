@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 
-class Hambuger extends React.Component {
+class Hamburger extends React.Component {
   render() {
     const styles = {
       icon: {
@@ -33,10 +34,15 @@ class Hambuger extends React.Component {
   }
 
   openSidePanel = () => {
+    this.context.firebase.auth().signOut();
     this.setState({
       sidePanelOpen: true,
     });
   }
 }
 
-export default Radium(Hambuger);
+Hamburger.contextTypes = {
+  firebase: PropTypes.object,
+};
+
+export default Radium(Hamburger);
