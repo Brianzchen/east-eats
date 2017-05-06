@@ -11725,6 +11725,7 @@ var Login = function (_React$Component) {
           height: '32px',
           width: '32px',
           textAlign: 'center',
+          paddingTop: '4px',
           paddingRight: '8px',
           color: this.context.colorSecondary
         },
@@ -11751,6 +11752,7 @@ var Login = function (_React$Component) {
           height: '32px',
           width: 'calc(50% - 8px)',
           margin: '32px 4px 0',
+          outline: 'none',
           cursor: 'pointer',
           ':hover': {
             backgroundColor: this.context.colorPrimary
