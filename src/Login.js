@@ -4,6 +4,8 @@ import Radium from 'radium';
 
 class Login extends React.Component {
   render() {
+    const width = `256px`;
+
     const styles = {
       container: {
         position: `fixed`,
@@ -35,11 +37,11 @@ class Login extends React.Component {
       title: {
         color: this.context.colorPrimary,
         margin: `auto auto 32px`,
-        width: `256px`,
+        width,
       },
       label: {
         display: `block`,
-        width: `256px`,
+        width,
         margin: `auto auto 4px auto`,
         padding: `8px`,
         borderBottom: `1px solid ${this.context.colorSecondary}`,
@@ -84,6 +86,12 @@ class Login extends React.Component {
           backgroundColor: this.context.colorPrimary,
         },
       },
+      errorMessage: {
+        width,
+        margin: `32px auto 0`,
+        textAlign: `center`,
+        color: `red`,
+      },
     };
 
     const emailLabelStyle = [styles.label, this.state.emailFocus && styles.labelSelected];
@@ -91,6 +99,12 @@ class Login extends React.Component {
 
     const passwordLabelStyle = [styles.label, this.state.passwordFocus && styles.labelSelected];
     const passwordIconStyle = [styles.icon, this.state.passwordFocus && styles.iconSelected];
+
+    const errorMessage = this.state.errorMessage ? (
+      <p style={styles.errorMessage}>
+        {this.state.errorMessage}
+      </p>
+    ) : null;
 
     return (
       <div style={styles.container}>
@@ -121,6 +135,7 @@ class Login extends React.Component {
               <input style={styles.button} key={`login`} type={`submit`} value={`Log in`} />
               <input style={styles.button} key={`signup`} type={`button`} value={`Sign up`} onClick={this.signUp} />
             </div>
+            {errorMessage}
           </form>
         </div>
       </div>
@@ -136,6 +151,7 @@ class Login extends React.Component {
       emailFocus: false,
       passwordFocus: false,
       formHeight: 0,
+      errorMessage: undefined,
     };
   }
 
@@ -189,7 +205,9 @@ class Login extends React.Component {
       this.state.email,
       this.state.password,
     ).catch(error => {
-      alert(error.message);
+      this.setState({
+        errorMessage: error.message,
+      });
     });
   }
 
@@ -198,7 +216,9 @@ class Login extends React.Component {
       this.state.email,
       this.state.password,
     ).catch(error => {
-      alert(error.message);
+      this.setState({
+        errorMessage: error.message,
+      });
     });
   }
 }

@@ -11674,6 +11674,8 @@ var Login = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var width = '256px';
+
       var styles = {
         container: {
           position: 'fixed',
@@ -11705,11 +11707,11 @@ var Login = function (_React$Component) {
         title: {
           color: this.context.colorPrimary,
           margin: 'auto auto 32px',
-          width: '256px'
+          width: width
         },
         label: {
           display: 'block',
-          width: '256px',
+          width: width,
           margin: 'auto auto 4px auto',
           padding: '8px',
           borderBottom: '1px solid ' + this.context.colorSecondary
@@ -11753,6 +11755,12 @@ var Login = function (_React$Component) {
           ':hover': {
             backgroundColor: this.context.colorPrimary
           }
+        },
+        errorMessage: {
+          width: width,
+          margin: '32px auto 0',
+          textAlign: 'center',
+          color: 'red'
         }
       };
 
@@ -11761,6 +11769,12 @@ var Login = function (_React$Component) {
 
       var passwordLabelStyle = [styles.label, this.state.passwordFocus && styles.labelSelected];
       var passwordIconStyle = [styles.icon, this.state.passwordFocus && styles.iconSelected];
+
+      var errorMessage = this.state.errorMessage ? _react2.default.createElement(
+        'p',
+        { style: styles.errorMessage },
+        this.state.errorMessage
+      ) : null;
 
       return _react2.default.createElement(
         'div',
@@ -11811,7 +11825,8 @@ var Login = function (_React$Component) {
               { style: styles.buttonGroup },
               _react2.default.createElement('input', { style: styles.button, key: 'login', type: 'submit', value: 'Log in' }),
               _react2.default.createElement('input', { style: styles.button, key: 'signup', type: 'button', value: 'Sign up', onClick: this.signUp })
-            )
+            ),
+            errorMessage
           )
         )
       );
@@ -11852,13 +11867,17 @@ var Login = function (_React$Component) {
     _this.logIn = function (event) {
       event.preventDefault();
       _this.context.firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password).catch(function (error) {
-        alert(error.message);
+        _this.setState({
+          errorMessage: error.message
+        });
       });
     };
 
     _this.signUp = function () {
       _this.context.firebase.auth().createUserWithEmailAndPassword(_this.state.email, _this.state.password).catch(function (error) {
-        alert(error.message);
+        _this.setState({
+          errorMessage: error.message
+        });
       });
     };
 
@@ -11867,7 +11886,8 @@ var Login = function (_React$Component) {
       password: '',
       emailFocus: false,
       passwordFocus: false,
-      formHeight: 0
+      formHeight: 0,
+      errorMessage: undefined
     };
     return _this;
   }
