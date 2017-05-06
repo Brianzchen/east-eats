@@ -11365,7 +11365,9 @@ var Main = function (_React$Component) {
     key: 'getChildContext',
     value: function getChildContext() {
       return {
-        firebase: this.props.firebase
+        firebase: this.props.firebase,
+        colorPrimary: '#2176AE',
+        colorSecondary: '#738290'
       };
     }
   }]);
@@ -11377,7 +11379,9 @@ exports.default = Main;
 
 
 Main.childContextTypes = {
-  firebase: _propTypes2.default.object
+  firebase: _propTypes2.default.object,
+  colorPrimary: _propTypes2.default.string,
+  colorSecondary: _propTypes2.default.string
 };
 
 Main.propTypes = {
@@ -11650,6 +11654,10 @@ var _propTypes = __webpack_require__(40);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _radium = __webpack_require__(42);
+
+var _radium2 = _interopRequireDefault(_radium);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11664,6 +11672,8 @@ var Login = function (_React$Component) {
   _createClass(Login, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var styles = {
         container: {
           position: 'fixed',
@@ -11686,17 +11696,26 @@ var Login = function (_React$Component) {
         form: {
           position: 'absolute',
           top: 'calc(50% - 128px)',
-          left: 'calc(50% - 128px)',
-          width: '352px',
+          left: 'calc(50% - 160px)',
+          width: '320px',
           padding: '64px 0',
           backgroundColor: 'rgba(255, 255, 255, 1)',
           boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
         },
+        title: {
+          color: this.context.colorPrimary,
+          margin: 'auto auto 32px',
+          width: '256px'
+        },
         label: {
           display: 'block',
           width: '256px',
-          margin: 'auto',
-          padding: '8px'
+          margin: 'auto auto 4px auto',
+          padding: '8px',
+          borderBottom: '1px solid ' + this.context.colorSecondary
+        },
+        labelSelected: {
+          borderBottom: '1px solid ' + this.context.colorPrimary
         },
         icon: {
           display: 'inline-block',
@@ -11704,15 +11723,44 @@ var Login = function (_React$Component) {
           height: '32px',
           width: '32px',
           textAlign: 'center',
-          paddingRight: '8px'
+          paddingRight: '8px',
+          color: this.context.colorSecondary
+        },
+        iconSelected: {
+          color: this.context.colorPrimary
         },
         input: {
           display: 'inline-block',
           boxSizing: 'border-box',
           border: 'none',
-          outline: 'none'
+          outline: 'none',
+          width: 'calc(100% - 40px)',
+          fontSize: '28px',
+          verticalAlign: 'top'
+        },
+        buttonGroup: {
+          width: '272px',
+          margin: 'auto'
+        },
+        button: {
+          backgroundColor: this.context.colorSecondary,
+          color: 'white',
+          border: 'none',
+          height: '32px',
+          width: 'calc(50% - 8px)',
+          margin: '32px 4px 0',
+          cursor: 'pointer',
+          ':hover': {
+            backgroundColor: this.context.colorPrimary
+          }
         }
       };
+
+      var emailLabelStyle = [styles.label, this.state.emailFocus && styles.labelSelected];
+      var emailIconStyle = [styles.icon, this.state.emailFocus && styles.iconSelected];
+
+      var passwordLabelStyle = [styles.label, this.state.passwordFocus && styles.labelSelected];
+      var passwordIconStyle = [styles.icon, this.state.passwordFocus && styles.iconSelected];
 
       return _react2.default.createElement(
         'div',
@@ -11724,31 +11772,44 @@ var Login = function (_React$Component) {
             'form',
             { style: styles.form, onSubmit: this.logIn },
             _react2.default.createElement(
+              'h1',
+              { style: styles.title },
+              'East Eats'
+            ),
+            _react2.default.createElement(
               'label',
-              { style: styles.label, htmlFor: 'emailInput' },
-              _react2.default.createElement('i', { style: styles.icon, className: 'fa fa-user-circle-o', 'aria-hidden': true }),
+              { style: emailLabelStyle, htmlFor: 'emailInput' },
+              _react2.default.createElement('i', { style: emailIconStyle, className: 'fa fa-user-circle-o', 'aria-hidden': true }),
               _react2.default.createElement('input', {
-                id: 'emailInput',
+                id: 'emailInput', ref: function ref(o) {
+                  _this2.email = o;
+                },
                 style: styles.input, name: 'email',
                 type: 'email', value: this.state.email,
                 onChange: this.onEmailChange, required: true,
-                placeholder: 'email'
+                placeholder: 'Email'
               })
             ),
             _react2.default.createElement(
               'label',
-              { style: styles.label, htmlFor: 'passwordInput' },
-              _react2.default.createElement('i', { style: styles.icon, className: 'fa fa-lock', 'aria-hidden': true }),
+              { style: passwordLabelStyle, htmlFor: 'passwordInput' },
+              _react2.default.createElement('i', { style: passwordIconStyle, className: 'fa fa-lock', 'aria-hidden': true }),
               _react2.default.createElement('input', {
-                id: 'passwordInput',
+                id: 'passwordInput', ref: function ref(o) {
+                  _this2.password = o;
+                },
                 style: styles.input, name: 'password',
                 type: 'password', value: this.state.password,
                 onChange: this.onPasswordChange, required: true,
-                placeholder: 'password'
+                placeholder: 'Password'
               })
             ),
-            _react2.default.createElement('input', { type: 'submit', value: 'Log in' }),
-            _react2.default.createElement('input', { type: 'button', value: 'Sign up', onClick: this.signUp })
+            _react2.default.createElement(
+              'div',
+              { style: styles.buttonGroup },
+              _react2.default.createElement('input', { style: styles.button, key: 'login', type: 'submit', value: 'Log in' }),
+              _react2.default.createElement('input', { style: styles.button, key: 'signup', type: 'button', value: 'Sign up', onClick: this.signUp })
+            )
           )
         )
       );
@@ -11759,6 +11820,20 @@ var Login = function (_React$Component) {
     _classCallCheck(this, Login);
 
     var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+    _this.inputEvent = function (event) {
+      var focus = event.type === 'focus';
+
+      if (event.target.id === 'emailInput') {
+        _this.setState({
+          emailFocus: focus
+        });
+      } else {
+        _this.setState({
+          passwordFocus: focus
+        });
+      }
+    };
 
     _this.onEmailChange = function (event) {
       _this.setState({
@@ -11787,20 +11862,41 @@ var Login = function (_React$Component) {
 
     _this.state = {
       email: '',
-      password: ''
+      password: '',
+      emailFocus: false,
+      passwordFocus: false
     };
     return _this;
   }
 
+  _createClass(Login, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.email.addEventListener('focus', this.inputEvent);
+      this.email.addEventListener('blur', this.inputEvent);
+      this.password.addEventListener('focus', this.inputEvent);
+      this.password.addEventListener('blur', this.inputEvent);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.email.removeEventListener('focus', this.inputEvent);
+      this.email.removeEventListener('blur', this.inputEvent);
+      this.password.removeEventListener('focus', this.inputEvent);
+      this.password.removeEventListener('blur', this.inputEvent);
+    }
+  }]);
+
   return Login;
 }(_react2.default.Component);
 
-exports.default = Login;
-
-
 Login.contextTypes = {
-  firebase: _propTypes2.default.object
+  firebase: _propTypes2.default.object,
+  colorPrimary: _propTypes2.default.string,
+  colorSecondary: _propTypes2.default.string
 };
+
+exports.default = (0, _radium2.default)(Login);
 
 /***/ }),
 /* 112 */

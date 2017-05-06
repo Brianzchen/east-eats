@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Radium from 'radium';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   render() {
     const styles = {
       container: {
@@ -25,17 +26,26 @@ export default class Login extends React.Component {
       form: {
         position: `absolute`,
         top: `calc(50% - 128px)`,
-        left: `calc(50% - 128px)`,
-        width: `352px`,
+        left: `calc(50% - 160px)`,
+        width: `320px`,
         padding: `64px 0`,
         backgroundColor: `rgba(255, 255, 255, 1)`,
         boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
       },
+      title: {
+        color: this.context.colorPrimary,
+        margin: `auto auto 32px`,
+        width: `256px`,
+      },
       label: {
         display: `block`,
         width: `256px`,
-        margin: `auto`,
+        margin: `auto auto 4px auto`,
         padding: `8px`,
+        borderBottom: `1px solid ${this.context.colorSecondary}`,
+      },
+      labelSelected: {
+        borderBottom: `1px solid ${this.context.colorPrimary}`,
       },
       icon: {
         display: `inline-block`,
@@ -44,41 +54,73 @@ export default class Login extends React.Component {
         width: `32px`,
         textAlign: `center`,
         paddingRight: `8px`,
+        color: this.context.colorSecondary,
+      },
+      iconSelected: {
+        color: this.context.colorPrimary,
       },
       input: {
         display: `inline-block`,
         boxSizing: `border-box`,
         border: `none`,
         outline: `none`,
+        width: `calc(100% - 40px)`,
+        fontSize: `28px`,
+        verticalAlign: `top`,
+      },
+      buttonGroup: {
+        width: `272px`,
+        margin: `auto`,
+      },
+      button: {
+        backgroundColor: this.context.colorSecondary,
+        color: `white`,
+        border: `none`,
+        height: `32px`,
+        width: `calc(50% - 8px)`,
+        margin: `32px 4px 0`,
+        cursor: `pointer`,
+        ':hover': {
+          backgroundColor: this.context.colorPrimary,
+        },
       },
     };
+
+    const emailLabelStyle = [styles.label, this.state.emailFocus && styles.labelSelected];
+    const emailIconStyle = [styles.icon, this.state.emailFocus && styles.iconSelected];
+
+    const passwordLabelStyle = [styles.label, this.state.passwordFocus && styles.labelSelected];
+    const passwordIconStyle = [styles.icon, this.state.passwordFocus && styles.iconSelected];
 
     return (
       <div style={styles.container}>
         <div style={styles.containerOverlay}>
           <form style={styles.form} onSubmit={this.logIn}>
-            <label style={styles.label} htmlFor={`emailInput`}>
-              <i style={styles.icon} className={`fa fa-user-circle-o`} aria-hidden />
+            <h1 style={styles.title}>East Eats</h1>
+            <label style={emailLabelStyle} htmlFor={`emailInput`}>
+              <i style={emailIconStyle} className={`fa fa-user-circle-o`} aria-hidden />
               <input
-                id={`emailInput`}
+                id={`emailInput`} ref={o => { this.email = o; }}
                 style={styles.input} name={`email`}
                 type={`email`} value={this.state.email}
                 onChange={this.onEmailChange} required
-                placeholder={`email`}
+                placeholder={`Email`}
               />
             </label>
-            <label style={styles.label} htmlFor={`passwordInput`}>
-              <i style={styles.icon} className={`fa fa-lock`} aria-hidden />
+            <label style={passwordLabelStyle} htmlFor={`passwordInput`}>
+              <i style={passwordIconStyle} className={`fa fa-lock`} aria-hidden />
               <input
-                id={`passwordInput`}
+                id={`passwordInput`} ref={o => { this.password = o; }}
                 style={styles.input} name={`password`}
                 type={`password`} value={this.state.password}
                 onChange={this.onPasswordChange} required
-                placeholder={`password`}
+                placeholder={`Password`}
               />
             </label>
-            <input type={`submit`} value={`Log in`} />
-            <input type={`button`} value={`Sign up`} onClick={this.signUp} />
+            <div style={styles.buttonGroup}>
+              <input style={styles.button} key={`login`} type={`submit`} value={`Log in`} />
+              <input style={styles.button} key={`signup`} type={`button`} value={`Sign up`} onClick={this.signUp} />
+            </div>
           </form>
         </div>
       </div>
@@ -91,7 +133,37 @@ export default class Login extends React.Component {
     this.state = {
       email: ``,
       password: ``,
+      emailFocus: false,
+      passwordFocus: false,
     };
+  }
+
+  componentDidMount() {
+    this.email.addEventListener(`focus`, this.inputEvent);
+    this.email.addEventListener(`blur`, this.inputEvent);
+    this.password.addEventListener(`focus`, this.inputEvent);
+    this.password.addEventListener(`blur`, this.inputEvent);
+  }
+
+  componentWillUnmount() {
+    this.email.removeEventListener(`focus`, this.inputEvent);
+    this.email.removeEventListener(`blur`, this.inputEvent);
+    this.password.removeEventListener(`focus`, this.inputEvent);
+    this.password.removeEventListener(`blur`, this.inputEvent);
+  }
+
+  inputEvent = event => {
+    const focus = event.type === `focus`;
+
+    if (event.target.id === `emailInput`) {
+      this.setState({
+        emailFocus: focus,
+      });
+    } else {
+      this.setState({
+        passwordFocus: focus,
+      });
+    }
   }
 
   onEmailChange = event => {
@@ -128,4 +200,8 @@ export default class Login extends React.Component {
 
 Login.contextTypes = {
   firebase: PropTypes.object,
+  colorPrimary: PropTypes.string,
+  colorSecondary: PropTypes.string,
 };
+
+export default Radium(Login);

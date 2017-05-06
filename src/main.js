@@ -34,12 +34,16 @@ export default class Main extends React.Component {
   getChildContext() {
     return ({
       firebase: this.props.firebase,
+      colorPrimary: `#2176AE`,
+      colorSecondary: `#738290`,
     });
   }
 }
 
 Main.childContextTypes = {
   firebase: PropTypes.object,
+  colorPrimary: PropTypes.string,
+  colorSecondary: PropTypes.string,
 };
 
 Main.propTypes = {
