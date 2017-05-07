@@ -19,18 +19,20 @@ class AddRestaurantButton extends React.Component {
       },
       plus: {
         position: `relative`,
-        top: `10px`,
-        left: `13px`,
+        left: `12px`,
         height: `48px`,
         width: `48px`,
         color: `white`,
-        fontSize: `48px`,
+        fontSize: `70px`,
+        lineHeight: `60px`,
       },
     };
 
     return (
       <div style={styles.container} onClick={this.openRestaurantModal}>
-        <i className={`fa fa-plus`} style={styles.plus} aria-hidden />
+        <div style={styles.plus}>
+          +
+        </div>
       </div>
     );
   }
