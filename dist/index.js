@@ -11868,6 +11868,7 @@ var Login = function (_React$Component) {
 
     _this.logIn = function (event) {
       event.preventDefault();
+      _this.setLoadingSpinner();
       _this.context.firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password).catch(function (error) {
         _this.setState({
           errorMessage: error.message
@@ -11876,10 +11877,22 @@ var Login = function (_React$Component) {
     };
 
     _this.signUp = function () {
+      _this.setLoadingSpinner();
       _this.context.firebase.auth().createUserWithEmailAndPassword(_this.state.email, _this.state.password).catch(function (error) {
         _this.setState({
           errorMessage: error.message
         });
+      });
+    };
+
+    _this.setLoadingSpinner = function () {
+      var style = {
+        color: _this.context.colorPrimary,
+        fontSize: '48px'
+      };
+
+      _this.setState({
+        errorMessage: _react2.default.createElement('i', { className: 'fa fa-spinner fa-pulse fa-fw', style: style })
       });
     };
 

@@ -203,6 +203,7 @@ class Login extends React.Component {
 
   logIn = event => {
     event.preventDefault();
+    this.setLoadingSpinner();
     this.context.firebase.auth().signInWithEmailAndPassword(
       this.state.email,
       this.state.password,
@@ -214,6 +215,7 @@ class Login extends React.Component {
   }
 
   signUp = () => {
+    this.setLoadingSpinner();
     this.context.firebase.auth().createUserWithEmailAndPassword(
       this.state.email,
       this.state.password,
@@ -221,6 +223,17 @@ class Login extends React.Component {
       this.setState({
         errorMessage: error.message,
       });
+    });
+  }
+
+  setLoadingSpinner = () => {
+    const style = {
+      color: this.context.colorPrimary,
+      fontSize: `48px`,
+    };
+
+    this.setState({
+      errorMessage: <i className={`fa fa-spinner fa-pulse fa-fw`} style={style} />,
     });
   }
 }
