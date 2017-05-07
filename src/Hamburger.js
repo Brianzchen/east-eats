@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 
+import SidePanel from './SidePanel';
+
 class Hamburger extends React.Component {
   render() {
     const styles = {
@@ -22,6 +24,7 @@ class Hamburger extends React.Component {
           style={styles.icon} className="fa fa-bars" aria-hidden="true"
           onClick={this.openSidePanel}
         />
+        <SidePanel open={this.state.sidePanelOpen} closeCallback={this.closeSidePanel} />
       </div>
     );
   }
@@ -35,9 +38,15 @@ class Hamburger extends React.Component {
   }
 
   openSidePanel = () => {
-    this.context.firebase.auth().signOut();
+    // this.context.firebase.auth().signOut();
     this.setState({
       sidePanelOpen: true,
+    });
+  }
+
+  closeSidePanel = () => {
+    this.setState({
+      sidePanelOpen: false,
     });
   }
 }

@@ -22,8 +22,8 @@ export default function App() {
     <StyleRoot style={styles.container}>
       <GoogleMap />
       <Title />
-      <Hamburger />
       <AddRestaurantButton />
+      <Hamburger />
     </StyleRoot>
   );
 }
