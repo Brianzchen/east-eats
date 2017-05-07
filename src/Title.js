@@ -13,8 +13,8 @@ function Title() {
       visibility: `visible`,
     },
     title: {
-      background: `rgba(238, 238, 238, 0.5)`,
-      color: `rgba(0, 0, 0, 1)`,
+      background: `rgba(115,130,144, 0.4)`,
+      color: `rgba(33,118,174, 1)`,
       padding: `8px`,
       borderRadius: `100px`,
       width: `145px`,

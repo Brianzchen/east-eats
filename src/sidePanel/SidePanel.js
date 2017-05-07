@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 
+import Banner from './Banner';
+import Footer from './Footer';
+
 function SidePanel(props) {
   const width = `304px`;
 
@@ -25,10 +28,8 @@ function SidePanel(props) {
 
   return (
     <div style={containerStyle}>
-      hi
-      <div onClick={props.closeCallback}>
-        close
-      </div>
+      <Banner closeCallback={props.closeCallback} />
+      <Footer />
     </div>
   );
 }

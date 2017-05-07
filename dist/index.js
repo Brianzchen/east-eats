@@ -11367,7 +11367,8 @@ var Main = function (_React$Component) {
       return {
         firebase: this.props.firebase,
         colorPrimary: '#2176AE',
-        colorSecondary: '#738290'
+        colorSecondary: '#738290',
+        colorHover: '#eee'
       };
     }
   }]);
@@ -11381,7 +11382,8 @@ exports.default = Main;
 Main.childContextTypes = {
   firebase: _propTypes2.default.object,
   colorPrimary: _propTypes2.default.string,
-  colorSecondary: _propTypes2.default.string
+  colorSecondary: _propTypes2.default.string,
+  colorHover: _propTypes2.default.string
 };
 
 Main.propTypes = {
@@ -11484,7 +11486,11 @@ var AddRestaurantButton = function (_React$Component) {
           width: '48px',
           color: 'white',
           fontSize: '70px',
-          lineHeight: '60px'
+          lineHeight: '60px',
+          userSelect: 'none',
+          ':hover': {
+            color: this.context.colorHover
+          }
         }
       };
 
@@ -11522,7 +11528,7 @@ var AddRestaurantButton = function (_React$Component) {
 
 AddRestaurantButton.contextTypes = {
   colorPrimary: _propTypes2.default.string,
-  colorSecondary: _propTypes2.default.string
+  colorHover: _propTypes2.default.string
 };
 
 exports.default = (0, _radium2.default)(AddRestaurantButton);
@@ -11677,7 +11683,7 @@ var _radium = __webpack_require__(20);
 
 var _radium2 = _interopRequireDefault(_radium);
 
-var _SidePanel = __webpack_require__(113);
+var _SidePanel = __webpack_require__(271);
 
 var _SidePanel2 = _interopRequireDefault(_SidePanel);
 
@@ -11700,7 +11706,7 @@ var Hamburger = function (_React$Component) {
           position: 'fixed',
           top: '16px',
           right: '12px',
-          fontSize: '2.5em',
+          fontSize: '40px',
           color: this.context.colorPrimary,
           cursor: 'pointer',
           WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)'
@@ -11725,7 +11731,6 @@ var Hamburger = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Hamburger.__proto__ || Object.getPrototypeOf(Hamburger)).call(this, props));
 
     _this.openSidePanel = function () {
-      // this.context.firebase.auth().signOut();
       _this.setState({
         sidePanelOpen: true
       });
@@ -12061,71 +12066,7 @@ Login.contextTypes = {
 exports.default = (0, _radium2.default)(Login);
 
 /***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(7);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(26);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _radium = __webpack_require__(20);
-
-var _radium2 = _interopRequireDefault(_radium);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function SidePanel(props) {
-  var width = '304px';
-
-  var styles = {
-    container: {
-      position: 'fixed',
-      height: '100%',
-      width: width,
-      top: 0,
-      right: '-' + width,
-      transition: 'all 0.4s',
-      backgroundColor: 'white'
-    },
-    open: {
-      right: 0,
-      boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
-    }
-  };
-
-  var containerStyle = [styles.container, props.open && styles.open];
-
-  return _react2.default.createElement(
-    'div',
-    { style: containerStyle },
-    'hi',
-    _react2.default.createElement(
-      'div',
-      { onClick: props.closeCallback },
-      'close'
-    )
-  );
-}
-
-SidePanel.propTypes = {
-  open: _propTypes2.default.bool.isRequired,
-  closeCallback: _propTypes2.default.func.isRequired
-};
-
-exports.default = (0, _radium2.default)(SidePanel);
-
-/***/ }),
+/* 113 */,
 /* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12158,8 +12099,8 @@ function Title() {
       visibility: 'visible'
     },
     title: {
-      background: 'rgba(238, 238, 238, 0.5)',
-      color: 'rgba(0, 0, 0, 1)',
+      background: 'rgba(115,130,144, 0.4)',
+      color: 'rgba(33,118,174, 1)',
       padding: '8px',
       borderRadius: '100px',
       width: '145px',
@@ -29076,6 +29017,235 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(26);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(20);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Banner = __webpack_require__(272);
+
+var _Banner2 = _interopRequireDefault(_Banner);
+
+var _Footer = __webpack_require__(273);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SidePanel(props) {
+  var width = '304px';
+
+  var styles = {
+    container: {
+      position: 'fixed',
+      height: '100%',
+      width: width,
+      top: 0,
+      right: '-' + width,
+      transition: 'all 0.4s',
+      backgroundColor: 'white'
+    },
+    open: {
+      right: 0,
+      boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+    }
+  };
+
+  var containerStyle = [styles.container, props.open && styles.open];
+
+  return _react2.default.createElement(
+    'div',
+    { style: containerStyle },
+    _react2.default.createElement(_Banner2.default, { closeCallback: props.closeCallback }),
+    _react2.default.createElement(_Footer2.default, null)
+  );
+}
+
+SidePanel.propTypes = {
+  open: _propTypes2.default.bool.isRequired,
+  closeCallback: _propTypes2.default.func.isRequired
+};
+
+exports.default = (0, _radium2.default)(SidePanel);
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(26);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(20);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Banner(props, context) {
+  var styles = {
+    container: {
+      height: '64px',
+      backgroundColor: context.colorPrimary
+    },
+    backButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '14px',
+      fontSize: '40px',
+      color: 'white',
+      cursor: 'pointer',
+      ':hover': {
+        color: context.colorHover
+      }
+    }
+  };
+
+  return _react2.default.createElement(
+    'div',
+    { style: styles.container },
+    _react2.default.createElement('i', {
+      className: 'fa fa-arrow-right',
+      style: styles.backButton,
+      'aria-hidden': true,
+      onClick: props.closeCallback
+    })
+  );
+}
+
+Banner.contextTypes = {
+  colorPrimary: _propTypes2.default.string,
+  colorHover: _propTypes2.default.string
+};
+
+Banner.propTypes = {
+  closeCallback: _propTypes2.default.func.isRequired
+};
+
+exports.default = (0, _radium2.default)(Banner);
+
+/***/ }),
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(26);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(20);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_React$Component) {
+  _inherits(Footer, _React$Component);
+
+  function Footer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Footer);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Footer.__proto__ || Object.getPrototypeOf(Footer)).call.apply(_ref, [this].concat(args))), _this), _this.logout = function () {
+      _this.context.firebase.auth().signOut();
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Footer, [{
+    key: 'render',
+    value: function render() {
+      var styles = {
+        container: {
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '64px',
+          backgroundColor: this.context.colorPrimary,
+          color: 'white',
+          fontSize: '32px',
+          lineHeight: '64px',
+          textAlign: 'center',
+          cursor: 'pointer',
+          ':hover': {
+            color: this.context.colorHover
+          }
+        }
+      };
+
+      return _react2.default.createElement(
+        'div',
+        { style: styles.container, onClick: this.logout },
+        'Logout'
+      );
+    }
+  }]);
+
+  return Footer;
+}(_react2.default.Component);
+
+Footer.contextTypes = {
+  firebase: _propTypes2.default.object,
+  colorPrimary: _propTypes2.default.string,
+  colorHover: _propTypes2.default.string
+};
+
+exports.default = (0, _radium2.default)(Footer);
 
 /***/ })
 /******/ ]);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 
-import SidePanel from './SidePanel';
+import SidePanel from './sidePanel/SidePanel';
 
 class Hamburger extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class Hamburger extends React.Component {
         position: `fixed`,
         top: `16px`,
         right: `12px`,
-        fontSize: `2.5em`,
+        fontSize: `40px`,
         color: this.context.colorPrimary,
         cursor: `pointer`,
         WebkitTapHighlightColor: `rgba(255, 255, 255, 0)`,
@@ -38,7 +38,6 @@ class Hamburger extends React.Component {
   }
 
   openSidePanel = () => {
-    // this.context.firebase.auth().signOut();
     this.setState({
       sidePanelOpen: true,
     });

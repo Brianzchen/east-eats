@@ -25,6 +25,10 @@ class AddRestaurantButton extends React.Component {
         color: `white`,
         fontSize: `70px`,
         lineHeight: `60px`,
+        userSelect: `none`,
+        ':hover': {
+          color: this.context.colorHover,
+        },
       },
     };
 
@@ -54,7 +58,7 @@ class AddRestaurantButton extends React.Component {
 
 AddRestaurantButton.contextTypes = {
   colorPrimary: PropTypes.string,
-  colorSecondary: PropTypes.string,
+  colorHover: PropTypes.string,
 };
 
 export default Radium(AddRestaurantButton);
