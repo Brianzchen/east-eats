@@ -4,6 +4,7 @@ import { StyleRoot } from 'radium';
 import GoogleMap from './GoogleMap';
 import Hamburger from './Hamburger';
 import Title from './Title';
+import AddRestaurantButton from './AddRestaurantButton';
 
 export default function App() {
   const styles = {
@@ -22,6 +23,7 @@ export default function App() {
       <GoogleMap />
       <Title />
       <Hamburger />
+      <AddRestaurantButton />
     </StyleRoot>
   );
 }

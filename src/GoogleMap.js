@@ -17,7 +17,7 @@ export default class GoogleMap extends React.Component {
     navigator.geolocation.getCurrentPosition(position => {
       this.map = new google.maps.Map(document.getElementById(`map`), {
         center: { lat: position.coords.latitude, lng: position.coords.longitude },
-        scrollwheel: false,
+        scrollwheel: true,
         zoom: 14,
         fullscreenControl: false,
         mapTypeControl: false,

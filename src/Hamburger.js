@@ -10,8 +10,9 @@ class Hamburger extends React.Component {
         top: `16px`,
         right: `12px`,
         fontSize: `2.5em`,
-        color: `#111111`,
+        color: this.context.colorPrimary,
         cursor: `pointer`,
+        WebkitTapHighlightColor: `rgba(255, 255, 255, 0)`,
       },
     };
 
@@ -43,6 +44,7 @@ class Hamburger extends React.Component {
 
 Hamburger.contextTypes = {
   firebase: PropTypes.object,
+  colorPrimary: PropTypes.string,
 };
 
 export default Radium(Hamburger);
