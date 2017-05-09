@@ -10,11 +10,13 @@ function Banner(props, context) {
     },
     backButton: {
       position: `absolute`,
-      top: `10px`,
+      top: 0,
       right: `14px`,
+      lineHeight: `64px`,
       fontSize: `40px`,
       color: `white`,
       cursor: `pointer`,
+      WebkitTapHighlightColor: `rgba(255, 255, 255, 0)`,
       ':hover': {
         color: context.colorHover,
       },
@@ -23,12 +25,9 @@ function Banner(props, context) {
 
   return (
     <div style={styles.container}>
-      <i
-        className={`fa fa-arrow-right`}
-        style={styles.backButton}
-        aria-hidden
-        onClick={props.closeCallback}
-      />
+      <i style={styles.backButton} className={`material-icons`} onClick={props.closeCallback}>
+        arrow_forward
+      </i>
     </div>
   );
 }

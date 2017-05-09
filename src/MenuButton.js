@@ -4,7 +4,7 @@ import Radium from 'radium';
 
 import SidePanel from './sidePanel/SidePanel';
 
-class Hamburger extends React.Component {
+class MenuButton extends React.Component {
   render() {
     const styles = {
       icon: {
@@ -20,10 +20,9 @@ class Hamburger extends React.Component {
 
     return (
       <div>
-        <i
-          style={styles.icon} className="fa fa-bars" aria-hidden="true"
-          onClick={this.openSidePanel}
-        />
+        <i style={styles.icon} className={`material-icons`} onClick={this.openSidePanel}>
+          menu
+        </i>
         <SidePanel open={this.state.sidePanelOpen} closeCallback={this.closeSidePanel} />
       </div>
     );
@@ -50,9 +49,9 @@ class Hamburger extends React.Component {
   }
 }
 
-Hamburger.contextTypes = {
+MenuButton.contextTypes = {
   firebase: PropTypes.object,
   colorPrimary: PropTypes.string,
 };
 
-export default Radium(Hamburger);
+export default Radium(MenuButton);

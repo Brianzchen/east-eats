@@ -22,10 +22,12 @@ function Title() {
     },
   };
 
+  const title = `East Eats`;
+
   return (
     <div style={styles.container}>
       <div style={styles.title}>
-        East Eats
+        {title}
       </div>
     </div>
   );

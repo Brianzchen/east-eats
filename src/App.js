@@ -2,28 +2,54 @@ import React from 'react';
 import { StyleRoot } from 'radium';
 
 import GoogleMap from './GoogleMap';
-import Hamburger from './Hamburger';
+import MenuButton from './MenuButton';
 import Title from './Title';
 import AddRestaurantButton from './AddRestaurantButton';
 
-export default function App() {
-  const styles = {
-    container: {
-      fontFamily: `'Lato', sans-serif`,
-      height: `100%`,
-      minWidth: `320px`,
-      margin: 0,
-      padding: 0,
-      overflow: `hidden`,
-    },
-  };
+export default class App extends React.Component {
+  render() {
+    const styles = {
+      container: {
+        fontFamily: `'Lato', sans-serif`,
+        height: `100%`,
+        minWidth: `320px`,
+        margin: 0,
+        padding: 0,
+        overflow: `hidden`,
+      },
+    };
 
-  return (
-    <StyleRoot style={styles.container}>
-      <GoogleMap />
-      <Title />
-      <AddRestaurantButton />
-      <Hamburger />
-    </StyleRoot>
-  );
+    return (
+      <StyleRoot style={styles.container}>
+        <GoogleMap />
+        <Title addRestaurant={this.state.addRestaurant} />
+        <AddRestaurantButton
+          addRestaurant={this.state.addRestaurant}
+          addCallback={this.addRestaurant}
+          cancelCallback={this.cancelAddRestaurant}
+        />
+        <MenuButton />
+      </StyleRoot>
+    );
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      addRestaurant: false,
+    };
+  }
+
+  addRestaurant = () => {
+    this.setState({
+      addRestaurant: true,
+    });
+  }
+
+  cancelAddRestaurant = () => {
+    this.setState({
+      addRestaurant: false,
+    });
+  }
 }
