@@ -9,8 +9,9 @@ class MenuButton extends React.Component {
     const styles = {
       icon: {
         position: `fixed`,
-        top: `16px`,
+        top: 0,
         right: `12px`,
+        lineHeight: `64px`,
         fontSize: `40px`,
         color: this.context.colorPrimary,
         cursor: `pointer`,

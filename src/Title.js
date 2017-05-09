@@ -6,19 +6,23 @@ function Title() {
     container: {
       position: `fixed`,
       top: `7px`,
+      height: `48px`,
       width: `100%`,
       textAlign: `center`,
-      fontSize: `2em`,
       pointerEvents: `none`,
       visibility: `visible`,
     },
     title: {
       background: `rgba(115,130,144, 0.4)`,
       color: `rgba(33,118,174, 1)`,
+      boxSizing: `border-box`,
       padding: `8px`,
       borderRadius: `100px`,
-      width: `145px`,
+      height: `100%`,
+      width: `160px`,
       margin: `auto`,
+      lineHeight: `32px`,
+      fontSize: `24px`,
     },
   };
 
