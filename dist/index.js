@@ -11316,7 +11316,7 @@ var _App = __webpack_require__(109);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _Login = __webpack_require__(112);
+var _Login = __webpack_require__(111);
 
 var _Login2 = _interopRequireDefault(_Login);
 
@@ -11465,29 +11465,48 @@ function AddRestaurantButton(props, context) {
       textAlign: 'center',
       cursor: 'pointer',
       boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-      WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)'
+      WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',
+      transformStyle: 'preserve-3d',
+      transition: 'all 0.5s linear'
+    },
+    containerTransform: {
+      transform: 'rotateY(180deg)'
     },
     icon: {
       color: 'white',
-      fontSize: props.addRestaurant ? '45px' : '52px',
       lineHeight: '64px',
       userSelect: 'none',
       ':hover': {
         color: context.colorHover
       }
+    },
+    addIcon: {
+      fontSize: '52px',
+      backfaceVisibility: 'hidden'
+    },
+    closeIcon: {
+      position: 'relative',
+      top: '-64px',
+      fontSize: '45px',
+      transform: 'rotateY(180deg)'
     }
   };
 
   var onClick = props.addRestaurant ? props.cancelCallback : props.addCallback;
-  var icon = props.addRestaurant ? 'close' : 'add';
+  var containerStyle = [styles.container, props.addRestaurant && styles.containerTransform];
 
   return _react2.default.createElement(
     'div',
-    { style: styles.container, onClick: onClick },
+    { style: containerStyle, onClick: onClick },
     _react2.default.createElement(
       'i',
-      { style: styles.icon, className: 'material-icons' },
-      icon
+      { style: [styles.icon, styles.addIcon], key: 'addIcon', className: 'material-icons' },
+      'add'
+    ),
+    _react2.default.createElement(
+      'i',
+      { style: [styles.icon, styles.closeIcon], key: 'closeIcon', className: 'material-icons' },
+      'close'
     )
   );
 }
@@ -11528,7 +11547,7 @@ var _GoogleMap = __webpack_require__(110);
 
 var _GoogleMap2 = _interopRequireDefault(_GoogleMap);
 
-var _MenuButton = __webpack_require__(273);
+var _MenuButton = __webpack_require__(112);
 
 var _MenuButton2 = _interopRequireDefault(_MenuButton);
 
@@ -11676,8 +11695,7 @@ var GoogleMap = function (_React$Component) {
 exports.default = GoogleMap;
 
 /***/ }),
-/* 111 */,
-/* 112 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11982,6 +12000,107 @@ Login.contextTypes = {
 };
 
 exports.default = (0, _radium2.default)(Login);
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(17);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(15);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _SidePanel = __webpack_require__(117);
+
+var _SidePanel2 = _interopRequireDefault(_SidePanel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MenuButton = function (_React$Component) {
+  _inherits(MenuButton, _React$Component);
+
+  _createClass(MenuButton, [{
+    key: 'render',
+    value: function render() {
+      var styles = {
+        icon: {
+          position: 'fixed',
+          top: '16px',
+          right: '12px',
+          fontSize: '40px',
+          color: this.context.colorPrimary,
+          cursor: 'pointer',
+          WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)'
+        }
+      };
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'i',
+          { style: styles.icon, className: 'material-icons', onClick: this.openSidePanel },
+          'menu'
+        ),
+        _react2.default.createElement(_SidePanel2.default, { open: this.state.sidePanelOpen, closeCallback: this.closeSidePanel })
+      );
+    }
+  }]);
+
+  function MenuButton(props) {
+    _classCallCheck(this, MenuButton);
+
+    var _this = _possibleConstructorReturn(this, (MenuButton.__proto__ || Object.getPrototypeOf(MenuButton)).call(this, props));
+
+    _this.openSidePanel = function () {
+      _this.setState({
+        sidePanelOpen: true
+      });
+    };
+
+    _this.closeSidePanel = function () {
+      _this.setState({
+        sidePanelOpen: false
+      });
+    };
+
+    _this.state = {
+      sidePanelOpen: false
+    };
+    return _this;
+  }
+
+  return MenuButton;
+}(_react2.default.Component);
+
+MenuButton.contextTypes = {
+  firebase: _propTypes2.default.object,
+  colorPrimary: _propTypes2.default.string
+};
+
+exports.default = (0, _radium2.default)(MenuButton);
 
 /***/ }),
 /* 113 */
@@ -29166,107 +29285,6 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
-
-/***/ }),
-/* 273 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(7);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(17);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _radium = __webpack_require__(15);
-
-var _radium2 = _interopRequireDefault(_radium);
-
-var _SidePanel = __webpack_require__(117);
-
-var _SidePanel2 = _interopRequireDefault(_SidePanel);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var MenuButton = function (_React$Component) {
-  _inherits(MenuButton, _React$Component);
-
-  _createClass(MenuButton, [{
-    key: 'render',
-    value: function render() {
-      var styles = {
-        icon: {
-          position: 'fixed',
-          top: '16px',
-          right: '12px',
-          fontSize: '40px',
-          color: this.context.colorPrimary,
-          cursor: 'pointer',
-          WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)'
-        }
-      };
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'i',
-          { style: styles.icon, className: 'material-icons', onClick: this.openSidePanel },
-          'menu'
-        ),
-        _react2.default.createElement(_SidePanel2.default, { open: this.state.sidePanelOpen, closeCallback: this.closeSidePanel })
-      );
-    }
-  }]);
-
-  function MenuButton(props) {
-    _classCallCheck(this, MenuButton);
-
-    var _this = _possibleConstructorReturn(this, (MenuButton.__proto__ || Object.getPrototypeOf(MenuButton)).call(this, props));
-
-    _this.openSidePanel = function () {
-      _this.setState({
-        sidePanelOpen: true
-      });
-    };
-
-    _this.closeSidePanel = function () {
-      _this.setState({
-        sidePanelOpen: false
-      });
-    };
-
-    _this.state = {
-      sidePanelOpen: false
-    };
-    return _this;
-  }
-
-  return MenuButton;
-}(_react2.default.Component);
-
-MenuButton.contextTypes = {
-  firebase: _propTypes2.default.object,
-  colorPrimary: _propTypes2.default.string
-};
-
-exports.default = (0, _radium2.default)(MenuButton);
 
 /***/ })
 /******/ ]);

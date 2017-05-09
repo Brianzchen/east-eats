@@ -16,25 +16,42 @@ function AddRestaurantButton(props, context) {
       cursor: `pointer`,
       boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
       WebkitTapHighlightColor: `rgba(255, 255, 255, 0)`,
+      transformStyle: `preserve-3d`,
+      transition: `all 0.5s linear`,
+    },
+    containerTransform: {
+      transform: `rotateY(180deg)`,
     },
     icon: {
       color: `white`,
-      fontSize: props.addRestaurant ? `45px` : `52px`,
       lineHeight: `64px`,
       userSelect: `none`,
       ':hover': {
         color: context.colorHover,
       },
     },
+    addIcon: {
+      fontSize: `52px`,
+      backfaceVisibility: `hidden`,
+    },
+    closeIcon: {
+      position: `relative`,
+      top: `-64px`,
+      fontSize: `45px`,
+      transform: `rotateY(180deg)`,
+    },
   };
 
   const onClick = props.addRestaurant ? props.cancelCallback : props.addCallback;
-  const icon = props.addRestaurant ? `close` : `add`;
+  const containerStyle = [styles.container, props.addRestaurant && styles.containerTransform];
 
   return (
-    <div style={styles.container} onClick={onClick}>
-      <i style={styles.icon} className={`material-icons`}>
-        {icon}
+    <div style={containerStyle} onClick={onClick}>
+      <i style={[styles.icon, styles.addIcon]} key={`addIcon`} className={`material-icons`}>
+        add
+      </i>
+      <i style={[styles.icon, styles.closeIcon]} key={`closeIcon`} className={`material-icons`}>
+        close
       </i>
     </div>
   );
