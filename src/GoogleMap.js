@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class GoogleMap extends React.Component {
   render() {
@@ -22,6 +23,20 @@ export default class GoogleMap extends React.Component {
         fullscreenControl: false,
         mapTypeControl: false,
       });
+
+      google.maps.event.addListener(this.map, `click`, event => {
+        if (this.props.addRestaurant) {
+          this.marker = new google.maps.Marker({
+            position: { lat: event.latLng.lat(), lng: event.latLng.lng() },
+            map: this.map,
+            title: `Add Restaurant Here`,
+          });
+        }
+      });
     });
   }
 }
+
+GoogleMap.propTypes = {
+  addRestaurant: PropTypes.bool.isRequired,
+};

@@ -11587,7 +11587,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         _radium.StyleRoot,
         { style: styles.container },
-        _react2.default.createElement(_GoogleMap2.default, null),
+        _react2.default.createElement(_GoogleMap2.default, { addRestaurant: this.state.addRestaurant }),
         _react2.default.createElement(_Title2.default, { addRestaurant: this.state.addRestaurant }),
         _react2.default.createElement(_AddRestaurantButton2.default, {
           addRestaurant: this.state.addRestaurant,
@@ -11644,6 +11644,10 @@ var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__(17);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11685,6 +11689,16 @@ var GoogleMap = function (_React$Component) {
           fullscreenControl: false,
           mapTypeControl: false
         });
+
+        google.maps.event.addListener(_this2.map, 'click', function (event) {
+          if (_this2.props.addRestaurant) {
+            _this2.marker = new google.maps.Marker({
+              position: { lat: event.latLng.lat(), lng: event.latLng.lng() },
+              map: _this2.map,
+              title: 'Add Restaurant Here'
+            });
+          }
+        });
       });
     }
   }]);
@@ -11693,6 +11707,11 @@ var GoogleMap = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = GoogleMap;
+
+
+GoogleMap.propTypes = {
+  addRestaurant: _propTypes2.default.bool.isRequired
+};
 
 /***/ }),
 /* 111 */
