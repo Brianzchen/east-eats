@@ -26,14 +26,27 @@ export default class GoogleMap extends React.Component {
 
       google.maps.event.addListener(this.map, `click`, event => {
         if (this.props.addRestaurant) {
-          this.marker = new google.maps.Marker({
+          this.newMarker && this.newMarker.setMap(null);
+          this.newMarker = new google.maps.Marker({
             position: { lat: event.latLng.lat(), lng: event.latLng.lng() },
             map: this.map,
-            title: `Add Restaurant Here`,
           });
+
+          this.infoWindow = new google.maps.InfoWindow({
+            content: `<div>New Restaurant</div>`,
+          });
+          this.infoWindow.open(this.map, this.newMarker);
         }
       });
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.addRestaurant &&
+        !nextProps.addRestaurant &&
+        this.newMarker) {
+      this.newMarker.setMap(null);
+    }
   }
 }
 

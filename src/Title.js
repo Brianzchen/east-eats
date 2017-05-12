@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 
-function Title() {
+function Title(props) {
   const styles = {
     container: {
       position: `fixed`,
@@ -23,18 +24,44 @@ function Title() {
       margin: `auto`,
       lineHeight: `32px`,
       fontSize: `24px`,
+      transformStyle: `preserve-3d`,
+      transition: `all 0.5s linear`,
+    },
+    titleTransform: {
+      transform: `rotateX(180deg)`,
+    },
+    name: {
+      backfaceVisibility: `hidden`,
+    },
+    instruction: {
+      position: `relative`,
+      top: `-32px`,
+      backfaceVisibility: `hidden`,
+      transform: `rotateX(180deg)`,
     },
   };
 
-  const title = `East Eats`;
+  const name = `East Eats`;
+  const instruction = `Add Place`;
+
+  const titleStyle = [styles.title, props.addRestaurant && styles.titleTransform];
 
   return (
     <div style={styles.container}>
-      <div style={styles.title}>
-        {title}
+      <div style={titleStyle}>
+        <div style={styles.name}>
+          {name}
+        </div>
+        <div style={styles.instruction}>
+          {instruction}
+        </div>
       </div>
     </div>
   );
 }
+
+Title.propTypes = {
+  addRestaurant: PropTypes.bool.isRequired,
+};
 
 export default Radium(Title);

@@ -114,7 +114,7 @@ class Login extends React.Component {
           <form style={styles.form} onSubmit={this.logIn} ref={o => { this.form = o; }}>
             <h1 style={styles.title}>East Eats</h1>
             <label style={emailLabelStyle} htmlFor={`emailInput`}>
-              <i style={emailIconStyle} className={`fa fa-user-circle-o`} aria-hidden />
+              <i style={emailIconStyle} className={`material-icons`}>account_circle</i>
               <input
                 id={`emailInput`} ref={o => { this.email = o; }}
                 style={styles.input} name={`email`}
@@ -124,7 +124,7 @@ class Login extends React.Component {
               />
             </label>
             <label style={passwordLabelStyle} htmlFor={`passwordInput`}>
-              <i style={passwordIconStyle} className={`fa fa-lock`} aria-hidden />
+              <i style={passwordIconStyle} className={`material-icons`}>lock</i>
               <input
                 id={`passwordInput`} ref={o => { this.password = o; }}
                 style={styles.input} name={`password`}
