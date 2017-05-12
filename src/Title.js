@@ -32,11 +32,13 @@ function Title(props) {
     },
     name: {
       backfaceVisibility: `hidden`,
+      WebkitBackfaceVisibility: `hidden`,
     },
     instruction: {
       position: `relative`,
       top: `-32px`,
       backfaceVisibility: `hidden`,
+      WebkitBackfaceVisibility: `hidden`,
       transform: `rotateX(180deg)`,
     },
   };
