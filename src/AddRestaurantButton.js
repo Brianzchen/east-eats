@@ -33,11 +33,14 @@ function AddRestaurantButton(props, context) {
     addIcon: {
       fontSize: `52px`,
       backfaceVisibility: `hidden`,
+      WebkitBackfaceVisibility: `hidden`,
     },
     closeIcon: {
       position: `relative`,
       top: `-64px`,
       fontSize: `45px`,
+      backfaceVisibility: `hidden`,
+      WebkitBackfaceVisibility: `hidden`,
       transform: `rotateY(180deg)`,
     },
   };
