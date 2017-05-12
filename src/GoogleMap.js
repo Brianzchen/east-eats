@@ -26,6 +26,7 @@ export default class GoogleMap extends React.Component {
 
       google.maps.event.addListener(this.map, `click`, event => {
         if (this.props.addRestaurant) {
+          this.marker && this.marker.setMap(null);
           this.marker = new google.maps.Marker({
             position: { lat: event.latLng.lat(), lng: event.latLng.lng() },
             map: this.map,
