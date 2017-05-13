@@ -30,6 +30,9 @@ export default class GoogleMap extends React.Component {
       openForm: false,
       newRestaurantLatLng: {},
     };
+
+    this.infoWindow = new google.maps.InfoWindow({
+    });
   }
 
   componentDidMount() {
@@ -68,12 +71,20 @@ export default class GoogleMap extends React.Component {
       const uid = this.context.firebase.auth().currentUser.uid;
       this.context.firebase.database().ref(`users/${uid}/restaurants`).on(
         `child_added`, data => {
-          this.markers.push(
-            new google.maps.Marker({
-              position: { lat: data.val().lat, lng: data.val().lng },
-              map: this.map,
-            }),
-          );
+          const marker = new google.maps.Marker({
+            position: { lat: data.val().lat, lng: data.val().lng },
+            map: this.map,
+          });
+
+          marker.addListener(`click`, () => {
+            this.infoWindow.setContent(
+              `<div>${data.val().name}</div>`,
+            );
+
+            this.infoWindow.open(this.map, marker);
+          });
+
+          this.markers.push(marker);
         });
     });
   }
