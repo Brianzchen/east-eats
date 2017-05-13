@@ -26,3 +26,9 @@ html, body, #container {
 input {
   font-family: 'Lato', sans-serif;
 }
+
+div.gmnoprint.gm-style-mtc {
+  top: 3px !important;
+  left: 1px !important;
+  width: 64px !important;
+}

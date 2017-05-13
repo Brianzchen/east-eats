@@ -39,6 +39,9 @@ export default class GoogleMap extends React.Component {
         zoom: 14,
         fullscreenControl: false,
         mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+        },
       });
 
       google.maps.event.addListener(this.map, `click`, event => {
