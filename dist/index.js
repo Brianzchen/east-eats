@@ -12195,7 +12195,8 @@ var GoogleMap = function (_React$Component) {
         _react2.default.createElement('div', { id: 'map', style: styles.container }),
         _react2.default.createElement(_NewRestaurantForm2.default, {
           openForm: this.state.openForm,
-          latLng: this.state.newRestaurantLatLng
+          latLng: this.state.newRestaurantLatLng,
+          clearNewMarker: this.clearNewMarker
         })
       );
     }
@@ -12205,6 +12206,13 @@ var GoogleMap = function (_React$Component) {
     _classCallCheck(this, GoogleMap);
 
     var _this = _possibleConstructorReturn(this, (GoogleMap.__proto__ || Object.getPrototypeOf(GoogleMap)).call(this, props));
+
+    _this.clearNewMarker = function () {
+      _this.newMarker.setMap(null);
+      _this.setState({
+        openForm: false
+      });
+    };
 
     _this.state = {
       openForm: false,
@@ -12248,16 +12256,22 @@ var GoogleMap = function (_React$Component) {
             });
           }
         });
+
+        _this2.markers = [];
+        var uid = _this2.context.firebase.auth().currentUser.uid;
+        _this2.context.firebase.database().ref('users/' + uid + '/restaurants').on('child_added', function (data) {
+          _this2.markers.push(new google.maps.Marker({
+            position: { lat: data.val().lat, lng: data.val().lng },
+            map: _this2.map
+          }));
+        });
       });
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (this.props.addRestaurant && !nextProps.addRestaurant && this.newMarker) {
-        this.newMarker.setMap(null);
-        this.setState({
-          openForm: false
-        });
+        this.clearNewMarker();
       }
     }
   }]);
@@ -12267,6 +12281,10 @@ var GoogleMap = function (_React$Component) {
 
 exports.default = GoogleMap;
 
+
+GoogleMap.contextTypes = {
+  firebase: _propTypes2.default.object
+};
 
 GoogleMap.propTypes = {
   addRestaurant: _propTypes2.default.bool.isRequired
@@ -12379,6 +12397,11 @@ var NewRestaurantForm = function (_React$Component) {
         name: _this.state.name,
         lat: _this.props.latLng.lat,
         lng: _this.props.latLng.lng
+      }, function () {
+        _this.props.clearNewMarker();
+        _this.setState({
+          name: ''
+        });
       });
     };
 
@@ -12401,7 +12424,8 @@ NewRestaurantForm.propTypes = {
   latLng: _propTypes2.default.shape({
     lat: _propTypes2.default.number,
     lng: _propTypes2.default.number
-  }).isRequired
+  }).isRequired,
+  clearNewMarker: _propTypes2.default.func.isRequired
 };
 
 exports.default = (0, _radium2.default)(NewRestaurantForm);

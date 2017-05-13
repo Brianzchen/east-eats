@@ -17,6 +17,7 @@ export default class GoogleMap extends React.Component {
         <NewRestaurantForm
           openForm={this.state.openForm}
           latLng={this.state.newRestaurantLatLng}
+          clearNewMarker={this.clearNewMarker}
         />
       </div>
     );
@@ -62,6 +63,18 @@ export default class GoogleMap extends React.Component {
           });
         }
       });
+
+      this.markers = [];
+      const uid = this.context.firebase.auth().currentUser.uid;
+      this.context.firebase.database().ref(`users/${uid}/restaurants`).on(
+        `child_added`, data => {
+          this.markers.push(
+            new google.maps.Marker({
+              position: { lat: data.val().lat, lng: data.val().lng },
+              map: this.map,
+            }),
+          );
+        });
     });
   }
 
@@ -69,13 +82,21 @@ export default class GoogleMap extends React.Component {
     if (this.props.addRestaurant &&
         !nextProps.addRestaurant &&
         this.newMarker) {
-      this.newMarker.setMap(null);
-      this.setState({
-        openForm: false,
-      });
+      this.clearNewMarker();
     }
   }
+
+  clearNewMarker = () => {
+    this.newMarker.setMap(null);
+    this.setState({
+      openForm: false,
+    });
+  }
 }
+
+GoogleMap.contextTypes = {
+  firebase: PropTypes.object,
+};
 
 GoogleMap.propTypes = {
   addRestaurant: PropTypes.bool.isRequired,

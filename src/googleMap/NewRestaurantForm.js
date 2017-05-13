@@ -72,6 +72,11 @@ class NewRestaurantForm extends React.Component {
       name: this.state.name,
       lat: this.props.latLng.lat,
       lng: this.props.latLng.lng,
+    }, () => {
+      this.props.clearNewMarker();
+      this.setState({
+        name: ``,
+      });
     });
   }
 }
@@ -87,6 +92,7 @@ NewRestaurantForm.propTypes = {
     lat: PropTypes.number,
     lng: PropTypes.number,
   }).isRequired,
+  clearNewMarker: PropTypes.func.isRequired,
 };
 
 export default Radium(NewRestaurantForm);
