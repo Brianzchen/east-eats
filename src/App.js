@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleRoot } from 'radium';
 
-import GoogleMap from './GoogleMap';
+import GoogleMap from './googleMap/GoogleMap';
 import MenuButton from './MenuButton';
 import Title from './Title';
 import AddRestaurantButton from './AddRestaurantButton';
