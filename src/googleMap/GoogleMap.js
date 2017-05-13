@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import NewRestaurantForm from './NewRestaurantForm';
+
 export default class GoogleMap extends React.Component {
   render() {
     const styles = {
@@ -10,8 +12,23 @@ export default class GoogleMap extends React.Component {
     };
 
     return (
-      <div id={`map`} style={styles.container} />
+      <div style={styles.container}>
+        <div id={`map`} style={styles.container} />
+        <NewRestaurantForm
+          openForm={this.state.openForm}
+          latLng={this.state.newRestaurantLatLng}
+        />
+      </div>
     );
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      openForm: false,
+      newRestaurantLatLng: {},
+    };
   }
 
   componentDidMount() {
@@ -21,21 +38,25 @@ export default class GoogleMap extends React.Component {
         scrollwheel: true,
         zoom: 14,
         fullscreenControl: false,
-        mapTypeControl: false,
+        mapTypeControl: true,
       });
 
       google.maps.event.addListener(this.map, `click`, event => {
         if (this.props.addRestaurant) {
+          const latLng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+
           this.newMarker && this.newMarker.setMap(null);
           this.newMarker = new google.maps.Marker({
-            position: { lat: event.latLng.lat(), lng: event.latLng.lng() },
+            position: latLng,
             map: this.map,
           });
 
-          this.infoWindow = new google.maps.InfoWindow({
-            content: `<div>New Restaurant</div>`,
+          this.setState({
+            openForm: true,
+            newRestaurantLatLng: latLng,
+          }, () => {
+            this.map.setCenter(latLng);
           });
-          this.infoWindow.open(this.map, this.newMarker);
         }
       });
     });
@@ -46,6 +67,9 @@ export default class GoogleMap extends React.Component {
         !nextProps.addRestaurant &&
         this.newMarker) {
       this.newMarker.setMap(null);
+      this.setState({
+        openForm: false,
+      });
     }
   }
 }
