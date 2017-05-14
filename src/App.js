@@ -21,7 +21,10 @@ export default class App extends React.Component {
 
     return (
       <StyleRoot style={styles.container}>
-        <GoogleMap addRestaurant={this.state.addRestaurant} />
+        <GoogleMap
+          addRestaurant={this.state.addRestaurant}
+          cancelAddRestaurant={this.cancelAddRestaurant}
+        />
         <Title addRestaurant={this.state.addRestaurant} />
         <AddRestaurantButton
           addRestaurant={this.state.addRestaurant}
