@@ -48,6 +48,7 @@ export default class GoogleMap extends React.Component {
         },
       });
 
+      // On click handler to create new restaurant marker
       google.maps.event.addListener(this.map, `click`, event => {
         if (this.props.addRestaurant) {
           const latLng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
@@ -56,6 +57,15 @@ export default class GoogleMap extends React.Component {
           this.newMarker = new google.maps.Marker({
             position: latLng,
             map: this.map,
+            draggable: true,
+          });
+
+          this.newMarker.addListener(`dragend`, data => {
+            const draggedLatLng = { lat: data.latLng.lat(), lng: data.latLng.lng() };
+
+            this.setState({
+              newRestaurantLatLng: draggedLatLng,
+            });
           });
 
           this.setState({
@@ -67,6 +77,7 @@ export default class GoogleMap extends React.Component {
         }
       });
 
+      // Create list of initial markers and listen for any new markers added
       this.markers = [];
       const uid = this.context.firebase.auth().currentUser.uid;
       this.context.firebase.database().ref(`users/${uid}/restaurants`).on(
@@ -99,6 +110,7 @@ export default class GoogleMap extends React.Component {
 
   clearNewMarker = () => {
     this.newMarker.setMap(null);
+    this.props.cancelAddRestaurant();
     this.setState({
       openForm: false,
     });
@@ -111,4 +123,5 @@ GoogleMap.contextTypes = {
 
 GoogleMap.propTypes = {
   addRestaurant: PropTypes.bool.isRequired,
+  cancelAddRestaurant: PropTypes.func.isRequired,
 };
