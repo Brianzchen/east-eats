@@ -12075,7 +12075,7 @@ var _radium2 = _interopRequireDefault(_radium);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Title(props) {
+function Title(props, context) {
   var styles = {
     container: {
       position: 'fixed',
@@ -12087,8 +12087,9 @@ function Title(props) {
       visibility: 'visible'
     },
     title: {
-      background: 'rgba(115,130,144, 0.4)',
-      color: 'rgba(33,118,174, 1)',
+      background: 'white',
+      color: context.colorPrimary,
+      boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
       boxSizing: 'border-box',
       padding: '8px',
       borderRadius: '100px',
@@ -12140,6 +12141,10 @@ function Title(props) {
     )
   );
 }
+
+Title.contextTypes = {
+  colorPrimary: _propTypes2.default.string
+};
 
 Title.propTypes = {
   addRestaurant: _propTypes2.default.bool.isRequired

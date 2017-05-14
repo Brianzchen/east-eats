@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 
-function Title(props) {
+function Title(props, context) {
   const styles = {
     container: {
       position: `fixed`,
@@ -14,8 +14,9 @@ function Title(props) {
       visibility: `visible`,
     },
     title: {
-      background: `rgba(115,130,144, 0.4)`,
-      color: `rgba(33,118,174, 1)`,
+      background: `white`,
+      color: context.colorPrimary,
+      boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
       boxSizing: `border-box`,
       padding: `8px`,
       borderRadius: `100px`,
@@ -61,6 +62,10 @@ function Title(props) {
     </div>
   );
 }
+
+Title.contextTypes = {
+  colorPrimary: PropTypes.string,
+};
 
 Title.propTypes = {
   addRestaurant: PropTypes.bool.isRequired,
