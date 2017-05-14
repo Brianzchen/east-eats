@@ -12102,7 +12102,8 @@ function Title(props, context) {
       transition: 'all 0.5s linear'
     },
     titleTransform: {
-      transform: 'rotateX(180deg)'
+      transform: 'rotateX(180deg)',
+      boxShadow: '0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19)'
     },
     name: {
       backfaceVisibility: 'hidden',
@@ -12367,20 +12368,35 @@ var NewRestaurantForm = function (_React$Component) {
           position: 'fixed',
           left: 'calc(50% - ' + width / 2 + 'px)',
           bottom: 0,
-          marginBottom: '88px',
+          marginBottom: '96px',
+          padding: '8px 24px 0',
           maxheight: 'calc(100% - 64px)',
           width: width + 'px',
           backgroundColor: 'white',
           opacity: 0,
-          transition: 'all 1s'
+          transition: 'opacity 1s',
+          fontSize: '14px',
+          boxSizing: 'border-box'
         },
         containerShow: {
           opacity: 1
+        },
+        label: {
+          display: 'inline-block',
+          width: '88px'
+        },
+        input: {
+          boxSizing: 'border-box',
+          width: '176px'
         },
         submit: {
           display: 'block',
           color: 'white',
           backgroundColor: this.context.colorPrimary,
+          margin: '8px auto 0',
+          height: '32px',
+          width: '128px',
+          fontSize: '18px',
           border: 'none',
           outline: 'none'
         }
@@ -12393,10 +12409,11 @@ var NewRestaurantForm = function (_React$Component) {
         { style: containerStyle, onSubmit: this.onSubmit },
         _react2.default.createElement(
           'label',
-          { htmlFor: 'restaurantName' },
+          { style: styles.label, htmlFor: 'restaurantName' },
           'Name'
         ),
         _react2.default.createElement('input', {
+          style: styles.input,
           id: 'restaurantName',
           type: 'text',
           value: this.state.name,
