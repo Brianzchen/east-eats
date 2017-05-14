@@ -11,20 +11,35 @@ class NewRestaurantForm extends React.Component {
         position: `fixed`,
         left: `calc(50% - ${width / 2}px)`,
         bottom: 0,
-        marginBottom: `88px`,
+        marginBottom: `96px`,
+        padding: `8px 24px 0`,
         maxheight: `calc(100% - 64px)`,
         width: `${width}px`,
         backgroundColor: `white`,
         opacity: 0,
-        transition: `all 1s`,
+        transition: `opacity 1s`,
+        fontSize: `14px`,
+        boxSizing: `border-box`,
       },
       containerShow: {
         opacity: 1,
+      },
+      label: {
+        display: `inline-block`,
+        width: `88px`,
+      },
+      input: {
+        boxSizing: `border-box`,
+        width: `176px`,
       },
       submit: {
         display: `block`,
         color: `white`,
         backgroundColor: this.context.colorPrimary,
+        margin: `8px auto 0`,
+        height: `32px`,
+        width: `128px`,
+        fontSize: `18px`,
         border: `none`,
         outline: `none`,
       },
@@ -34,10 +49,11 @@ class NewRestaurantForm extends React.Component {
 
     return (
       <form style={containerStyle} onSubmit={this.onSubmit}>
-        <label htmlFor={`restaurantName`}>
+        <label style={styles.label} htmlFor={`restaurantName`}>
           Name
         </label>
         <input
+          style={styles.input}
           id={`restaurantName`}
           type={`text`}
           value={this.state.name}
